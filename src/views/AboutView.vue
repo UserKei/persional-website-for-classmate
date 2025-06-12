@@ -29,7 +29,7 @@
               :initial="{ opacity: 0, x: -100 }"
               :enter="{ opacity: 1, x: 0, transition: { duration: 600, delay: 400 } }"
             >
-              计算机科学与技术专业在读
+              软件工程专业在读 - 广州大学
             </h2>
             <p
               class="about-description"
@@ -37,7 +37,8 @@
               :initial="{ opacity: 0, x: -100 }"
               :enter="{ opacity: 1, x: 0, transition: { duration: 600, delay: 600 } }"
             >
-              我是一名热爱编程的计算机专业大学生，对Web开发、移动应用开发和人工智能领域充满热情。
+              我是陈梓涛，一名热爱编程的软件工程专业大学生，于2023年入学广州大学。
+              对Web开发、移动应用开发和软件工程领域充满热情。
               在学习过程中，我不断探索新技术，通过实际项目锻炼自己的编程能力。
             </p>
           </div>
@@ -165,15 +166,15 @@ import { ref } from 'vue'
 const timeline = ref([
   {
     id: 1,
-    date: '2022 - 至今',
-    title: '计算机科学与技术专业',
+    date: '2023 - 至今',
+    title: '软件工程专业 - 广州大学',
     description:
-      '在大学期间专注学习编程基础、数据结构与算法、软件工程等核心课程，并积极参与各类编程竞赛和项目实践。',
-    tags: ['数据结构', '算法', '软件工程', '数据库'],
+      '在广州大学软件工程专业学习，专注于软件开发方法学、系统分析与设计、编程基础等核心课程，并积极参与各类编程项目和实践活动。',
+    tags: ['软件工程', '系统设计', '编程实践', '项目管理'],
   },
   {
     id: 2,
-    date: '2023',
+    date: '2023下半年',
     title: 'Web开发入门',
     description: '开始学习前端开发技术，掌握HTML、CSS、JavaScript基础，并深入学习Vue.js框架。',
     tags: ['HTML', 'CSS', 'JavaScript', 'Vue.js'],
@@ -182,7 +183,8 @@ const timeline = ref([
     id: 3,
     date: '2024',
     title: '全栈开发探索',
-    description: '拓展后端开发技能，学习Node.js、数据库设计，完成了多个全栈项目。',
+    description:
+      '拓展后端开发技能，学习Node.js、数据库设计，完成了多个全栈项目，提升软件开发综合能力。',
     tags: ['Node.js', 'MongoDB', 'MySQL', 'Express'],
   },
 ])

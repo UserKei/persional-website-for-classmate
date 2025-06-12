@@ -18,7 +18,7 @@
           :initial="{ opacity: 0, y: -30 }"
           :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 200 } }"
         >
-          这里展示了我在学习过程中完成的一些项目，涵盖Web开发、移动应用等多个领域。
+          这里展示了我在软件工程专业学习过程中完成的一些项目，涵盖Web应用、企业级系统等多个领域。
         </p>
       </section>
 

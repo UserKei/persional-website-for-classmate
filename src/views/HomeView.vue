@@ -6,8 +6,8 @@ const techStack = ref([
   { name: 'TypeScript', icon: '🔷' },
   { name: 'Vue.js', icon: '💚' },
   { name: 'React', icon: '⚛️' },
-  { name: 'Node.js', icon: '💚' },
-  { name: 'Python', icon: '🐍' },
+  { name: 'Java', icon: '☕' },
+  { name: 'Spring Boot', icon: '🍃' },
   { name: 'MySQL', icon: '🗄️' },
   { name: 'Git', icon: '📚' },
 ])
@@ -15,24 +15,24 @@ const techStack = ref([
 const featuredProjects = ref([
   {
     id: 1,
-    title: '个人博客系统',
-    description: '基于Vue3和Node.js开发的全栈博客应用，支持Markdown编辑和评论系统。',
-    tags: ['Vue3', 'Node.js', 'MongoDB'],
-    icon: '📝',
+    title: '软件项目管理系统',
+    description: '基于Vue3和Spring Boot开发的软件项目管理平台，支持敏捷开发流程和团队协作功能。',
+    tags: ['Vue3', 'Spring Boot', 'MySQL'],
+    icon: '📋',
   },
   {
     id: 2,
-    title: '任务管理工具',
-    description: '响应式设计的任务管理应用，具有拖拽排序和团队协作功能。',
-    tags: ['React', 'TypeScript', 'Redux'],
-    icon: '✅',
+    title: '在线学习平台',
+    description: '响应式设计的教育管理系统，具有课程管理、作业提交和成绩统计功能。',
+    tags: ['React', 'Node.js', 'MongoDB'],
+    icon: '📚',
   },
   {
     id: 3,
-    title: '天气预报小程序',
-    description: '集成多个天气API的小程序，提供精确的天气预报和生活指数。',
-    tags: ['微信小程序', 'JavaScript'],
-    icon: '🌤️',
+    title: '校园生活小程序',
+    description: '集成多个校园服务的微信小程序，提供课表查询、成绩查看和校园资讯功能。',
+    tags: ['微信小程序', 'JavaScript', 'MySQL'],
+    icon: '🎓',
   },
 ])
 </script>
@@ -45,13 +45,13 @@ const featuredProjects = ref([
         <div class="hero-text">
           <h1
             class="hero-title glitch-text"
-            data-text="你好，我是 张同学"
+            data-text="你好，我是 陈梓涛"
             v-motion
             :initial="{ opacity: 0, y: 100 }"
             :enter="{ opacity: 1, y: 0, transition: { duration: 800, delay: 200 } }"
           >
             你好，我是
-            <span class="highlight hologram-text">张同学</span>
+            <span class="highlight hologram-text">陈梓涛</span>
           </h1>
           <h2
             class="hero-subtitle"
@@ -59,7 +59,7 @@ const featuredProjects = ref([
             :initial="{ opacity: 0, y: 50 }"
             :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 400 } }"
           >
-            计算机专业大学生 | 全栈开发者
+            软件工程专业学生 | 全栈开发者 | 广州大学
           </h2>
           <p
             class="hero-description"
@@ -67,8 +67,8 @@ const featuredProjects = ref([
             :initial="{ opacity: 0, y: 30 }"
             :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 600 } }"
           >
-            热爱编程，专注于Web开发和人工智能。目前在学习最新的技术栈，
-            致力于用代码创造有价值的产品。
+            热爱编程，专注于Web开发和软件工程。2023年入学广州大学软件工程专业，
+            致力于用代码创造有价值的产品，追求卓越的软件开发技术。
           </p>
           <div
             class="hero-buttons"
