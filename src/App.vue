@@ -12,7 +12,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <nav class="navbar" :class="{ 'scrolled': isScrolled }">
+  <nav class="navbar" :class="{ scrolled: isScrolled }">
     <div class="nav-container">
       <RouterLink to="/" class="nav-brand">张同学</RouterLink>
       <div class="nav-menu">
@@ -149,11 +149,11 @@ onMounted(() => {
     flex-direction: column;
     gap: 1rem;
   }
-  
+
   .nav-menu {
     gap: 1rem;
   }
-  
+
   .footer-content {
     flex-direction: column;
     gap: 1rem;

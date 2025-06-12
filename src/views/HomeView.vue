@@ -9,7 +9,7 @@ const techStack = ref([
   { name: 'Node.js', icon: '💚' },
   { name: 'Python', icon: '🐍' },
   { name: 'MySQL', icon: '🗄️' },
-  { name: 'Git', icon: '📚' }
+  { name: 'Git', icon: '📚' },
 ])
 
 const featuredProjects = ref([
@@ -18,22 +18,22 @@ const featuredProjects = ref([
     title: '个人博客系统',
     description: '基于Vue3和Node.js开发的全栈博客应用，支持Markdown编辑和评论系统。',
     tags: ['Vue3', 'Node.js', 'MongoDB'],
-    icon: '📝'
+    icon: '📝',
   },
   {
     id: 2,
     title: '任务管理工具',
     description: '响应式设计的任务管理应用，具有拖拽排序和团队协作功能。',
     tags: ['React', 'TypeScript', 'Redux'],
-    icon: '✅'
+    icon: '✅',
   },
   {
     id: 3,
     title: '天气预报小程序',
     description: '集成多个天气API的小程序，提供精确的天气预报和生活指数。',
     tags: ['微信小程序', 'JavaScript'],
-    icon: '🌤️'
-  }
+    icon: '🌤️',
+  },
 ])
 </script>
 
@@ -359,20 +359,20 @@ const featuredProjects = ref([
     gap: 2rem;
     text-align: center;
   }
-  
+
   .hero-title {
     font-size: 2rem;
   }
-  
+
   .hero-subtitle {
     font-size: 1.2rem;
   }
-  
+
   .tech-grid {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 1rem;
   }
-  
+
   .projects-grid {
     grid-template-columns: 1fr;
   }

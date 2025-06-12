@@ -73,69 +73,70 @@ const timeline = ref([
     id: 1,
     date: '2022 - 至今',
     title: '计算机科学与技术专业',
-    description: '在大学期间专注学习编程基础、数据结构与算法、软件工程等核心课程，并积极参与各类编程竞赛和项目实践。',
-    tags: ['数据结构', '算法', '软件工程', '数据库']
+    description:
+      '在大学期间专注学习编程基础、数据结构与算法、软件工程等核心课程，并积极参与各类编程竞赛和项目实践。',
+    tags: ['数据结构', '算法', '软件工程', '数据库'],
   },
   {
     id: 2,
     date: '2023',
     title: 'Web开发入门',
     description: '开始学习前端开发技术，掌握HTML、CSS、JavaScript基础，并深入学习Vue.js框架。',
-    tags: ['HTML', 'CSS', 'JavaScript', 'Vue.js']
+    tags: ['HTML', 'CSS', 'JavaScript', 'Vue.js'],
   },
   {
     id: 3,
     date: '2024',
     title: '全栈开发探索',
     description: '拓展后端开发技能，学习Node.js、数据库设计，完成了多个全栈项目。',
-    tags: ['Node.js', 'MongoDB', 'MySQL', 'Express']
-  }
+    tags: ['Node.js', 'MongoDB', 'MySQL', 'Express'],
+  },
 ])
 
 const interests = ref([
   {
     title: '编程学习',
     icon: '💻',
-    description: '热爱学习新的编程语言和技术框架，享受解决复杂问题的过程。'
+    description: '热爱学习新的编程语言和技术框架，享受解决复杂问题的过程。',
   },
   {
     title: '开源贡献',
     icon: '🌟',
-    description: '积极参与开源项目，为社区贡献自己的力量，同时学习优秀的代码实践。'
+    description: '积极参与开源项目，为社区贡献自己的力量，同时学习优秀的代码实践。',
   },
   {
     title: '技术分享',
     icon: '📚',
-    description: '喜欢记录学习心得，通过博客和技术文档分享知识和经验。'
+    description: '喜欢记录学习心得，通过博客和技术文档分享知识和经验。',
   },
   {
     title: '产品设计',
     icon: '🎨',
-    description: '关注用户体验设计，努力创造既美观又实用的产品界面。'
-  }
+    description: '关注用户体验设计，努力创造既美观又实用的产品界面。',
+  },
 ])
 
 const values = ref([
   {
     title: '持续学习',
     icon: '📈',
-    description: '技术发展日新月异，保持学习的热情和好奇心是程序员的基本素养。'
+    description: '技术发展日新月异，保持学习的热情和好奇心是程序员的基本素养。',
   },
   {
     title: '代码质量',
     icon: '⚡',
-    description: '追求简洁、高效、可维护的代码，注重编程规范和最佳实践。'
+    description: '追求简洁、高效、可维护的代码，注重编程规范和最佳实践。',
   },
   {
     title: '团队合作',
     icon: '🤝',
-    description: '相信团队的力量，善于沟通协作，共同创造更大的价值。'
+    description: '相信团队的力量，善于沟通协作，共同创造更大的价值。',
   },
   {
     title: '用户导向',
     icon: '🎯',
-    description: '始终以用户需求为中心，开发真正解决问题的产品和服务。'
-  }
+    description: '始终以用户需求为中心，开发真正解决问题的产品和服务。',
+  },
 ])
 </script>
 
@@ -353,26 +354,26 @@ const values = ref([
     gap: 2rem;
     text-align: center;
   }
-  
+
   .timeline::before {
     left: 2rem;
   }
-  
+
   .timeline-item {
     justify-content: flex-start !important;
     padding-left: 4rem !important;
     padding-right: 0 !important;
   }
-  
+
   .timeline-marker {
     left: 2rem !important;
   }
-  
+
   .timeline-content {
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
-  
+
   .interests-grid,
   .values-grid {
     grid-template-columns: 1fr;

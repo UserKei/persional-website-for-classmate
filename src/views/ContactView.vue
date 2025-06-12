@@ -19,8 +19,8 @@
               <h3 class="contact-title">{{ contact.title }}</h3>
               <p class="contact-value">{{ contact.value }}</p>
               <p class="contact-description">{{ contact.description }}</p>
-              <a 
-                :href="contact.link" 
+              <a
+                :href="contact.link"
                 class="contact-button"
                 :target="contact.external ? '_blank' : '_self'"
               >
@@ -37,10 +37,10 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="name">姓名 *</label>
-                <input 
-                  type="text" 
-                  id="name" 
-                  v-model="form.name" 
+                <input
+                  type="text"
+                  id="name"
+                  v-model="form.name"
                   required
                   :class="{ error: errors.name }"
                 />
@@ -48,10 +48,10 @@
               </div>
               <div class="form-group">
                 <label for="email">邮箱 *</label>
-                <input 
-                  type="email" 
-                  id="email" 
-                  v-model="form.email" 
+                <input
+                  type="email"
+                  id="email"
+                  v-model="form.email"
                   required
                   :class="{ error: errors.email }"
                 />
@@ -60,10 +60,10 @@
             </div>
             <div class="form-group">
               <label for="subject">主题 *</label>
-              <input 
-                type="text" 
-                id="subject" 
-                v-model="form.subject" 
+              <input
+                type="text"
+                id="subject"
+                v-model="form.subject"
                 required
                 :class="{ error: errors.subject }"
               />
@@ -71,10 +71,10 @@
             </div>
             <div class="form-group">
               <label for="message">消息内容 *</label>
-              <textarea 
-                id="message" 
-                v-model="form.message" 
-                rows="6" 
+              <textarea
+                id="message"
+                v-model="form.message"
+                rows="6"
                 required
                 :class="{ error: errors.message }"
               ></textarea>
@@ -92,10 +92,10 @@
       <section class="social-section">
         <h2 class="section-title">社交媒体</h2>
         <div class="social-grid">
-          <a 
-            v-for="social in socialMedia" 
+          <a
+            v-for="social in socialMedia"
             :key="social.name"
-            :href="social.link" 
+            :href="social.link"
             target="_blank"
             class="social-card"
           >
@@ -157,14 +157,14 @@ const form = reactive({
   name: '',
   email: '',
   subject: '',
-  message: ''
+  message: '',
 })
 
 const errors = reactive({
   name: '',
   email: '',
   subject: '',
-  message: ''
+  message: '',
 })
 
 const isSubmitting = ref(false)
@@ -178,7 +178,7 @@ const contactMethods = ref<ContactMethod[]>([
     icon: '📧',
     link: 'mailto:student@example.com',
     buttonText: '发送邮件',
-    external: false
+    external: false,
   },
   {
     type: 'wechat',
@@ -188,7 +188,7 @@ const contactMethods = ref<ContactMethod[]>([
     icon: '💬',
     link: '#',
     buttonText: '添加微信',
-    external: false
+    external: false,
   },
   {
     type: 'phone',
@@ -198,7 +198,7 @@ const contactMethods = ref<ContactMethod[]>([
     icon: '📱',
     link: 'tel:+8613800000000',
     buttonText: '拨打电话',
-    external: false
+    external: false,
   },
   {
     type: 'location',
@@ -208,8 +208,8 @@ const contactMethods = ref<ContactMethod[]>([
     icon: '📍',
     link: '#',
     buttonText: '查看位置',
-    external: false
-  }
+    external: false,
+  },
 ])
 
 const socialMedia = ref<SocialMedia[]>([
@@ -217,76 +217,81 @@ const socialMedia = ref<SocialMedia[]>([
     name: 'GitHub',
     icon: '💻',
     description: '查看我的代码项目',
-    link: 'https://github.com/username'
+    link: 'https://github.com/username',
   },
   {
     name: 'LinkedIn',
     icon: '💼',
     description: '职业社交网络',
-    link: 'https://linkedin.com/in/username'
+    link: 'https://linkedin.com/in/username',
   },
   {
     name: '知乎',
     icon: '💡',
     description: '技术文章分享',
-    link: 'https://zhihu.com/people/username'
+    link: 'https://zhihu.com/people/username',
   },
   {
     name: 'CSDN',
     icon: '📝',
     description: '技术博客文章',
-    link: 'https://blog.csdn.net/username'
+    link: 'https://blog.csdn.net/username',
   },
   {
     name: 'B站',
     icon: '🎬',
     description: '编程教学视频',
-    link: 'https://space.bilibili.com/username'
+    link: 'https://space.bilibili.com/username',
   },
   {
     name: 'QQ',
     icon: '🐧',
     description: '即时通讯',
-    link: 'tencent://message/?uin=123456789'
-  }
+    link: 'tencent://message/?uin=123456789',
+  },
 ])
 
 const faqs = ref<FAQ[]>([
   {
     id: 1,
     question: '您目前在寻找实习机会吗？',
-    answer: '是的，我正在寻找Web开发相关的实习机会，特别是前端开发或全栈开发岗位。我希望能够在实际项目中应用所学知识，并学习行业最佳实践。',
-    isOpen: false
+    answer:
+      '是的，我正在寻找Web开发相关的实习机会，特别是前端开发或全栈开发岗位。我希望能够在实际项目中应用所学知识，并学习行业最佳实践。',
+    isOpen: false,
   },
   {
     id: 2,
     question: '您最擅长哪种技术栈？',
-    answer: '我最熟悉的是JavaScript生态系统，包括Vue.js、React、Node.js等。同时也在学习Python和Java后端开发。我相信持续学习新技术是程序员必备的素质。',
-    isOpen: false
+    answer:
+      '我最熟悉的是JavaScript生态系统，包括Vue.js、React、Node.js等。同时也在学习Python和Java后端开发。我相信持续学习新技术是程序员必备的素质。',
+    isOpen: false,
   },
   {
     id: 3,
     question: '您有团队合作经验吗？',
-    answer: '有的，我在学校参与了多个团队项目，包括课程设计和课外项目。我熟悉Git协作流程，具备良好的沟通能力，能够与团队成员有效配合。',
-    isOpen: false
+    answer:
+      '有的，我在学校参与了多个团队项目，包括课程设计和课外项目。我熟悉Git协作流程，具备良好的沟通能力，能够与团队成员有效配合。',
+    isOpen: false,
   },
   {
     id: 4,
     question: '您的项目源代码可以查看吗？',
-    answer: '当然可以！我的大部分项目都开源在GitHub上，您可以查看代码实现和文档说明。我相信开源精神，也希望通过分享代码来学习和改进。',
-    isOpen: false
+    answer:
+      '当然可以！我的大部分项目都开源在GitHub上，您可以查看代码实现和文档说明。我相信开源精神，也希望通过分享代码来学习和改进。',
+    isOpen: false,
   },
   {
     id: 5,
     question: '您对薪资有什么期待？',
-    answer: '作为学生，我更注重学习机会和成长空间。薪资方面可以根据市场行情和岗位要求协商，我相信通过努力工作和持续学习，薪资会随着能力提升而增长。',
-    isOpen: false
-  }
+    answer:
+      '作为学生，我更注重学习机会和成长空间。薪资方面可以根据市场行情和岗位要求协商，我相信通过努力工作和持续学习，薪资会随着能力提升而增长。',
+    isOpen: false,
+  },
 ])
 
 const validateForm = () => {
   // 清空之前的错误
-  Object.keys(errors).forEach(key => {
+  Object.keys(errors).forEach((key) => {
     errors[key as keyof typeof errors] = ''
   })
 
@@ -330,16 +335,16 @@ const submitForm = async () => {
 
   try {
     // 模拟表单提交
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
+    await new Promise((resolve) => setTimeout(resolve, 2000))
+
     // 这里应该调用实际的API
     console.log('表单数据:', form)
-    
+
     // 重置表单
-    Object.keys(form).forEach(key => {
+    Object.keys(form).forEach((key) => {
       form[key as keyof typeof form] = ''
     })
-      alert('消息发送成功！我会尽快回复您。')
+    alert('消息发送成功！我会尽快回复您。')
   } catch (err) {
     console.error('发送失败:', err)
     alert('发送失败，请稍后再试。')
@@ -349,7 +354,7 @@ const submitForm = async () => {
 }
 
 const toggleFaq = (id: number) => {
-  const faq = faqs.value.find(f => f.id === id)
+  const faq = faqs.value.find((f) => f.id === id)
   if (faq) {
     faq.isOpen = !faq.isOpen
   }
@@ -649,15 +654,15 @@ const toggleFaq = (id: number) => {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .contact-cards {
     grid-template-columns: 1fr;
   }
-  
+
   .form-row {
     grid-template-columns: 1fr;
   }
-  
+
   .social-grid {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }

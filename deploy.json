@@ -1,0 +1,11 @@
+{
+  "name": "deploy",
+  "description": "部署脚本",
+  "scripts": {
+    "build": "npm run build",
+    "preview": "npm run preview",
+    "deploy-github": "npm run build && gh-pages -d dist",
+    "deploy-vercel": "npm run build && vercel --prod",
+    "deploy-netlify": "npm run build && netlify deploy --prod --dir=dist"
+  }
+}

@@ -12,18 +12,18 @@
       <!-- Filter -->
       <section class="filter-section">
         <div class="filter-buttons">
-          <button 
-            class="filter-btn" 
+          <button
+            class="filter-btn"
             :class="{ active: activeFilter === 'all' }"
             @click="setFilter('all')"
           >
             全部
           </button>
-          <button 
-            class="filter-btn" 
+          <button
+            class="filter-btn"
             :class="{ active: activeFilter === category }"
             @click="setFilter(category)"
-            v-for="category in categories" 
+            v-for="category in categories"
             :key="category"
           >
             {{ getCategoryName(category) }}
@@ -41,7 +41,12 @@
                 <a :href="project.demo" target="_blank" class="project-link" v-if="project.demo">
                   <span>🔗</span> 预览
                 </a>
-                <a :href="project.github" target="_blank" class="project-link" v-if="project.github">
+                <a
+                  :href="project.github"
+                  target="_blank"
+                  class="project-link"
+                  v-if="project.github"
+                >
                   <span>📁</span> 代码
                 </a>
               </div>
@@ -61,7 +66,9 @@
             </div>
             <div class="project-meta">
               <span class="project-date">{{ project.date }}</span>
-              <span class="project-status" :class="project.status">{{ getStatusText(project.status) }}</span>
+              <span class="project-status" :class="project.status">{{
+                getStatusText(project.status)
+              }}</span>
             </div>
           </div>
         </div>
@@ -94,110 +101,74 @@ const projects = ref<Project[]>([
     id: 1,
     title: '个人博客系统',
     description: '基于Vue3和Node.js开发的全栈博客应用，支持文章发布、评论互动、用户管理等功能。',
-    features: [
-      'Markdown编辑器',
-      '用户注册登录',
-      '评论系统',
-      '文章分类标签',
-      '响应式设计'
-    ],
+    features: ['Markdown编辑器', '用户注册登录', '评论系统', '文章分类标签', '响应式设计'],
     tags: ['Vue3', 'Node.js', 'MongoDB', 'Express', 'JWT'],
     category: 'web',
     date: '2024.03',
     status: 'completed',
     icon: '📝',
     demo: 'https://blog-demo.com',
-    github: 'https://github.com/username/blog'
+    github: 'https://github.com/username/blog',
   },
   {
     id: 2,
     title: '任务管理工具',
     description: '现代化的任务管理应用，支持项目协作、进度跟踪、团队沟通等功能。',
-    features: [
-      '拖拽式任务管理',
-      '项目看板视图',
-      '团队协作',
-      '进度统计',
-      '消息通知'
-    ],
+    features: ['拖拽式任务管理', '项目看板视图', '团队协作', '进度统计', '消息通知'],
     tags: ['React', 'TypeScript', 'Redux', 'Ant Design'],
     category: 'web',
     date: '2024.05',
     status: 'completed',
     icon: '✅',
     demo: 'https://task-demo.com',
-    github: 'https://github.com/username/task-manager'
+    github: 'https://github.com/username/task-manager',
   },
   {
     id: 3,
     title: '天气预报小程序',
     description: '集成多个天气API的微信小程序，提供精确的天气预报和生活指数。',
-    features: [
-      '实时天气查询',
-      '7天天气预报',
-      '生活指数提醒',
-      '城市搜索',
-      '定位服务'
-    ],
+    features: ['实时天气查询', '7天天气预报', '生活指数提醒', '城市搜索', '定位服务'],
     tags: ['微信小程序', 'JavaScript', 'WeChat API'],
     category: 'mobile',
     date: '2024.01',
     status: 'completed',
     icon: '🌤️',
-    github: 'https://github.com/username/weather-miniprogram'
+    github: 'https://github.com/username/weather-miniprogram',
   },
   {
     id: 4,
     title: '电商管理系统',
     description: '为小型电商企业设计的后台管理系统，包含商品管理、订单处理、数据统计等功能。',
-    features: [
-      '商品信息管理',
-      '订单处理流程',
-      '用户管理',
-      '销售数据统计',
-      '权限控制'
-    ],
+    features: ['商品信息管理', '订单处理流程', '用户管理', '销售数据统计', '权限控制'],
     tags: ['Vue3', 'Element Plus', 'Spring Boot', 'MySQL'],
     category: 'web',
     date: '2024.06',
     status: 'in-progress',
     icon: '🛒',
-    github: 'https://github.com/username/ecommerce-admin'
+    github: 'https://github.com/username/ecommerce-admin',
   },
   {
     id: 5,
     title: '学习笔记App',
     description: '移动端学习笔记应用，支持多媒体笔记、知识图谱、复习提醒等功能。',
-    features: [
-      '多媒体笔记',
-      '知识图谱',
-      '复习提醒',
-      '标签分类',
-      '云端同步'
-    ],
+    features: ['多媒体笔记', '知识图谱', '复习提醒', '标签分类', '云端同步'],
     tags: ['React Native', 'TypeScript', 'SQLite'],
     category: 'mobile',
     date: '2024.08',
     status: 'planned',
-    icon: '📚'
+    icon: '📚',
   },
   {
     id: 6,
     title: '智能聊天机器人',
     description: '基于自然语言处理的智能客服机器人，可以回答常见问题并提供个性化服务。',
-    features: [
-      '自然语言理解',
-      '多轮对话',
-      '知识库管理',
-      '情感分析',
-      '多平台接入'
-    ],
+    features: ['自然语言理解', '多轮对话', '知识库管理', '情感分析', '多平台接入'],
     tags: ['Python', 'TensorFlow', 'NLP', 'Flask'],
     category: 'ai',
     date: '2024.09',
     status: 'in-progress',
-    icon: '🤖'
-  }
+    icon: '🤖',
+  },
 ])
 
 const categories = ['web', 'mobile', 'ai']
@@ -206,7 +177,7 @@ const filteredProjects = computed(() => {
   if (activeFilter.value === 'all') {
     return projects.value
   }
-  return projects.value.filter(project => project.category === activeFilter.value)
+  return projects.value.filter((project) => project.category === activeFilter.value)
 })
 
 const setFilter = (filter: string) => {
@@ -217,7 +188,7 @@ const getCategoryName = (category: string) => {
   const names = {
     web: 'Web开发',
     mobile: '移动应用',
-    ai: '人工智能'
+    ai: '人工智能',
   }
   return names[category as keyof typeof names] || category
 }
@@ -226,7 +197,7 @@ const getStatusText = (status: string) => {
   const texts = {
     completed: '已完成',
     'in-progress': '进行中',
-    planned: '计划中'
+    planned: '计划中',
   }
   return texts[status as keyof typeof texts] || status
 }
@@ -469,11 +440,11 @@ const getStatusText = (status: string) => {
   .projects-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .filter-buttons {
     justify-content: center;
   }
-  
+
   .filter-btn {
     padding: 0.6rem 1rem;
     font-size: 0.9rem;
