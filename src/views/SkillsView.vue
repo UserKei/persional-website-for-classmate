@@ -3,7 +3,7 @@
     <div class="container">
       <!-- Header -->
       <section class="skills-header">
-        <h1 
+        <h1
           class="page-title"
           v-motion
           :initial="{ opacity: 0, y: -50 }"
@@ -11,7 +11,7 @@
         >
           技能展示
         </h1>
-        <p 
+        <p
           class="page-description"
           v-motion
           :initial="{ opacity: 0, y: -30 }"
@@ -23,7 +23,7 @@
 
       <!-- Technical Skills -->
       <section class="technical-skills">
-        <h2 
+        <h2
           class="section-title"
           v-motion
           :initial="{ opacity: 0, y: 50 }"
@@ -32,21 +32,21 @@
           技术技能
         </h2>
         <div class="skills-categories">
-          <div 
-            class="skill-category" 
-            v-for="(category, categoryIndex) in skillCategories" 
+          <div
+            class="skill-category"
+            v-for="(category, categoryIndex) in skillCategories"
             :key="category.name"
             v-motion
             :initial="{ opacity: 0, y: 50, scale: 0.9 }"
-            :visible-once="{ 
-              opacity: 1, 
-              y: 0, 
+            :visible-once="{
+              opacity: 1,
+              y: 0,
               scale: 1,
-              transition: { 
-                duration: 600, 
+              transition: {
+                duration: 600,
                 delay: categoryIndex * 200,
-                type: 'spring'
-              } 
+                type: 'spring',
+              },
             }"
           >
             <h3 class="category-title">
@@ -54,19 +54,19 @@
               {{ category.name }}
             </h3>
             <div class="skills-list">
-              <div 
-                class="skill-item" 
-                v-for="(skill, skillIndex) in category.skills" 
+              <div
+                class="skill-item"
+                v-for="(skill, skillIndex) in category.skills"
                 :key="skill.name"
                 v-motion
                 :initial="{ opacity: 0, x: -50 }"
-                :visible-once="{ 
-                  opacity: 1, 
+                :visible-once="{
+                  opacity: 1,
                   x: 0,
-                  transition: { 
-                    duration: 400, 
-                    delay: (categoryIndex * 200) + (skillIndex * 100)
-                  } 
+                  transition: {
+                    duration: 400,
+                    delay: categoryIndex * 200 + skillIndex * 100,
+                  },
                 }"
               >
                 <div class="skill-info">
@@ -74,18 +74,18 @@
                   <span class="skill-level">{{ skill.level }}%</span>
                 </div>
                 <div class="skill-bar">
-                  <div 
-                    class="skill-progress" 
+                  <div
+                    class="skill-progress"
                     :style="{ width: skill.level + '%' }"
                     :class="getSkillLevelClass(skill.level)"
                     v-motion
                     :initial="{ width: '0%' }"
-                    :visible-once="{ 
+                    :visible-once="{
                       width: skill.level + '%',
-                      transition: { 
-                        duration: 1000, 
-                        delay: (categoryIndex * 200) + (skillIndex * 100) + 200
-                      } 
+                      transition: {
+                        duration: 1000,
+                        delay: categoryIndex * 200 + skillIndex * 100 + 200,
+                      },
                     }"
                   ></div>
                 </div>
@@ -98,7 +98,7 @@
 
       <!-- Tools & Technologies -->
       <section class="tools-section">
-        <h2 
+        <h2
           class="section-title"
           v-motion
           :initial="{ opacity: 0, y: 50 }"
@@ -107,26 +107,26 @@
           工具与技术
         </h2>
         <div class="tools-grid">
-          <div 
-            class="tool-card" 
-            v-for="(tool, index) in tools" 
+          <div
+            class="tool-card"
+            v-for="(tool, index) in tools"
             :key="tool.name"
             v-motion
             :initial="{ opacity: 0, y: 50, rotateY: 45 }"
-            :visible-once="{ 
-              opacity: 1, 
-              y: 0, 
+            :visible-once="{
+              opacity: 1,
+              y: 0,
               rotateY: 0,
-              transition: { 
-                duration: 500, 
+              transition: {
+                duration: 500,
                 delay: index * 100,
-                type: 'spring'
-              } 
+                type: 'spring',
+              },
             }"
-            :hover="{ 
-              y: -5, 
+            :hover="{
+              y: -5,
               scale: 1.05,
-              transition: { duration: 200 }
+              transition: { duration: 200 },
             }"
           >
             <div class="tool-icon">{{ tool.icon }}</div>
@@ -141,7 +141,7 @@
 
       <!-- Learning Path -->
       <section class="learning-section">
-        <h2 
+        <h2
           class="section-title"
           v-motion
           :initial="{ opacity: 0, y: 50 }"
@@ -150,21 +150,21 @@
           学习路径
         </h2>
         <div class="learning-timeline">
-          <div 
-            class="learning-item" 
-            v-for="(item, index) in learningPath" 
+          <div
+            class="learning-item"
+            v-for="(item, index) in learningPath"
             :key="item.id"
             v-motion
             :initial="{ opacity: 0, x: index % 2 === 0 ? -100 : 100, scale: 0.8 }"
-            :visible-once="{ 
-              opacity: 1, 
-              x: 0, 
+            :visible-once="{
+              opacity: 1,
+              x: 0,
               scale: 1,
-              transition: { 
-                duration: 700, 
+              transition: {
+                duration: 700,
                 delay: index * 200,
-                type: 'spring'
-              } 
+                type: 'spring',
+              },
             }"
           >
             <div class="learning-marker"></div>
@@ -173,19 +173,19 @@
               <h3 class="learning-title">{{ item.title }}</h3>
               <p class="learning-description">{{ item.description }}</p>
               <div class="learning-skills">
-                <span 
-                  class="skill-tag" 
-                  v-for="(skill, skillIndex) in item.skills" 
+                <span
+                  class="skill-tag"
+                  v-for="(skill, skillIndex) in item.skills"
                   :key="skill"
                   v-motion
                   :initial="{ opacity: 0, scale: 0 }"
-                  :visible-once="{ 
-                    opacity: 1, 
+                  :visible-once="{
+                    opacity: 1,
                     scale: 1,
-                    transition: { 
-                      duration: 300, 
-                      delay: (index * 200) + (skillIndex * 50) + 400
-                    } 
+                    transition: {
+                      duration: 300,
+                      delay: index * 200 + skillIndex * 50 + 400,
+                    },
                   }"
                 >
                   {{ skill }}
@@ -198,7 +198,7 @@
 
       <!-- Certificates -->
       <section class="certificates-section">
-        <h2 
+        <h2
           class="section-title"
           v-motion
           :initial="{ opacity: 0, y: 50 }"
@@ -207,26 +207,26 @@
           证书与成就
         </h2>
         <div class="certificates-grid">
-          <div 
-            class="certificate-card" 
-            v-for="(cert, index) in certificates" 
+          <div
+            class="certificate-card"
+            v-for="(cert, index) in certificates"
             :key="cert.id"
             v-motion
             :initial="{ opacity: 0, y: 50, rotateX: 45 }"
-            :visible-once="{ 
-              opacity: 1, 
-              y: 0, 
+            :visible-once="{
+              opacity: 1,
+              y: 0,
               rotateX: 0,
-              transition: { 
-                duration: 600, 
+              transition: {
+                duration: 600,
                 delay: index * 150,
-                type: 'spring'
-              } 
+                type: 'spring',
+              },
             }"
-            :hover="{ 
-              y: -5, 
+            :hover="{
+              y: -5,
               scale: 1.02,
-              transition: { duration: 200 }
+              transition: { duration: 200 },
             }"
           >
             <div class="certificate-icon">{{ cert.icon }}</div>

@@ -12,16 +12,16 @@ onMounted(() => {
 </script>
 
 <template>
-  <nav 
-    class="navbar" 
-    :class="{ 'scrolled': isScrolled }"
+  <nav
+    class="navbar"
+    :class="{ scrolled: isScrolled }"
     v-motion
     :initial="{ y: -100, opacity: 0 }"
     :enter="{ y: 0, opacity: 1, transition: { duration: 600, delay: 200 } }"
   >
     <div class="nav-container">
-      <RouterLink 
-        to="/" 
+      <RouterLink
+        to="/"
         class="nav-brand"
         v-motion
         :initial="{ x: -50, opacity: 0 }"
@@ -31,8 +31,8 @@ onMounted(() => {
         张同学
       </RouterLink>
       <div class="nav-menu">
-        <RouterLink 
-          to="/" 
+        <RouterLink
+          to="/"
           class="nav-link"
           v-motion
           :initial="{ y: -20, opacity: 0 }"
@@ -41,8 +41,8 @@ onMounted(() => {
         >
           首页
         </RouterLink>
-        <RouterLink 
-          to="/about" 
+        <RouterLink
+          to="/about"
           class="nav-link"
           v-motion
           :initial="{ y: -20, opacity: 0 }"
@@ -51,8 +51,8 @@ onMounted(() => {
         >
           关于我
         </RouterLink>
-        <RouterLink 
-          to="/projects" 
+        <RouterLink
+          to="/projects"
           class="nav-link"
           v-motion
           :initial="{ y: -20, opacity: 0 }"
@@ -61,8 +61,8 @@ onMounted(() => {
         >
           项目
         </RouterLink>
-        <RouterLink 
-          to="/skills" 
+        <RouterLink
+          to="/skills"
           class="nav-link"
           v-motion
           :initial="{ y: -20, opacity: 0 }"
@@ -70,8 +70,9 @@ onMounted(() => {
           :hover="{ y: -2, transition: { duration: 200 } }"
         >
           技能
-        </RouterLink>        <RouterLink 
-          to="/contact" 
+        </RouterLink>
+        <RouterLink
+          to="/contact"
           class="nav-link"
           v-motion
           :initial="{ y: -20, opacity: 0 }"
@@ -88,7 +89,7 @@ onMounted(() => {
     <RouterView />
   </main>
 
-  <footer 
+  <footer
     class="footer"
     v-motion
     :initial="{ opacity: 0, y: 50 }"
@@ -97,26 +98,26 @@ onMounted(() => {
     <div class="footer-content">
       <p>&copy; 2025 张同学. All rights reserved.</p>
       <div class="social-links">
-        <a 
-          href="https://github.com" 
-          target="_blank" 
+        <a
+          href="https://github.com"
+          target="_blank"
           class="social-link"
           v-motion
           :hover="{ scale: 1.1, transition: { duration: 200 } }"
         >
           GitHub
         </a>
-        <a 
-          href="https://linkedin.com" 
-          target="_blank" 
+        <a
+          href="https://linkedin.com"
+          target="_blank"
           class="social-link"
           v-motion
           :hover="{ scale: 1.1, transition: { duration: 200 } }"
         >
           LinkedIn
         </a>
-        <a 
-          href="mailto:your-email@example.com" 
+        <a
+          href="mailto:your-email@example.com"
           class="social-link"
           v-motion
           :hover="{ scale: 1.1, transition: { duration: 200 } }"
@@ -236,11 +237,11 @@ onMounted(() => {
     flex-direction: column;
     gap: 1rem;
   }
-  
+
   .nav-menu {
     gap: 1rem;
   }
-  
+
   .footer-content {
     flex-direction: column;
     gap: 1rem;

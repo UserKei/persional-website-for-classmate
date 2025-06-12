@@ -43,7 +43,7 @@ const featuredProjects = ref([
     <section class="hero">
       <div class="hero-content">
         <div class="hero-text">
-          <h1 
+          <h1
             class="hero-title"
             v-motion
             :initial="{ opacity: 0, y: 100 }"
@@ -52,7 +52,7 @@ const featuredProjects = ref([
             你好，我是
             <span class="highlight">张同学</span>
           </h1>
-          <h2 
+          <h2
             class="hero-subtitle"
             v-motion
             :initial="{ opacity: 0, y: 50 }"
@@ -60,7 +60,7 @@ const featuredProjects = ref([
           >
             计算机专业大学生 | 全栈开发者
           </h2>
-          <p 
+          <p
             class="hero-description"
             v-motion
             :initial="{ opacity: 0, y: 30 }"
@@ -69,7 +69,7 @@ const featuredProjects = ref([
             热爱编程，专注于Web开发和人工智能。目前在学习最新的技术栈，
             致力于用代码创造有价值的产品。
           </p>
-          <div 
+          <div
             class="hero-buttons"
             v-motion
             :initial="{ opacity: 0, y: 20 }"
@@ -80,7 +80,7 @@ const featuredProjects = ref([
           </div>
         </div>
         <div class="hero-image">
-          <div 
+          <div
             class="code-animation"
             v-motion
             :initial="{ opacity: 0, x: 100, rotateY: 45 }"
@@ -103,7 +103,7 @@ const featuredProjects = ref([
     <!-- Skills Preview -->
     <section class="skills-preview">
       <div class="container">
-        <h2 
+        <h2
           class="section-title"
           v-motion
           :initial="{ opacity: 0, y: 50 }"
@@ -112,22 +112,22 @@ const featuredProjects = ref([
           技术栈
         </h2>
         <div class="tech-grid">
-          <div 
-            class="tech-item" 
-            v-for="(tech, index) in techStack" 
+          <div
+            class="tech-item"
+            v-for="(tech, index) in techStack"
             :key="tech.name"
             v-motion
             :initial="{ opacity: 0, y: 50, scale: 0.8 }"
-            :visible-once="{ 
-              opacity: 1, 
-              y: 0, 
-              scale: 1, 
-              transition: { 
-                duration: 500, 
+            :visible-once="{
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              transition: {
+                duration: 500,
                 delay: index * 100,
                 type: 'spring',
-                stiffness: 100
-              } 
+                stiffness: 100,
+              },
             }"
           >
             <div class="tech-icon">{{ tech.icon }}</div>
@@ -140,7 +140,7 @@ const featuredProjects = ref([
     <!-- Projects Preview -->
     <section class="projects-preview">
       <div class="container">
-        <h2 
+        <h2
           class="section-title"
           v-motion
           :initial="{ opacity: 0, y: 50 }"
@@ -149,21 +149,21 @@ const featuredProjects = ref([
           精选项目
         </h2>
         <div class="projects-grid">
-          <div 
-            class="project-card" 
-            v-for="(project, index) in featuredProjects" 
+          <div
+            class="project-card"
+            v-for="(project, index) in featuredProjects"
             :key="project.id"
             v-motion
             :initial="{ opacity: 0, y: 100, rotateX: 45 }"
-            :visible-once="{ 
-              opacity: 1, 
-              y: 0, 
+            :visible-once="{
+              opacity: 1,
+              y: 0,
               rotateX: 0,
-              transition: { 
-                duration: 700, 
+              transition: {
+                duration: 700,
                 delay: index * 200,
-                type: 'spring'
-              } 
+                type: 'spring',
+              },
             }"
           >
             <div class="project-image">
@@ -178,7 +178,7 @@ const featuredProjects = ref([
             </div>
           </div>
         </div>
-        <div 
+        <div
           class="text-center"
           v-motion
           :initial="{ opacity: 0, y: 30 }"

@@ -3,7 +3,7 @@
     <div class="container">
       <!-- Header -->
       <section class="projects-header">
-        <h1 
+        <h1
           class="page-title"
           v-motion
           :initial="{ opacity: 0, y: -50 }"
@@ -11,7 +11,7 @@
         >
           我的项目
         </h1>
-        <p 
+        <p
           class="page-description"
           v-motion
           :initial="{ opacity: 0, y: -30 }"
@@ -23,7 +23,7 @@
 
       <!-- Filter -->
       <section class="filter-section">
-        <div 
+        <div
           class="filter-buttons"
           v-motion
           :initial="{ opacity: 0, scale: 0.8 }"
@@ -60,25 +60,25 @@
           :key="project.id"
           v-motion
           :initial="{ opacity: 0, y: 50, scale: 0.9 }"
-          :enter="{ 
-            opacity: 1, 
-            y: 0, 
+          :enter="{
+            opacity: 1,
+            y: 0,
             scale: 1,
-            transition: { 
-              duration: 500, 
+            transition: {
+              duration: 500,
               delay: index * 100,
               type: 'spring',
-              stiffness: 100
-            } 
+              stiffness: 100,
+            },
           }"
-          :leave="{ 
-            opacity: 0, 
+          :leave="{
+            opacity: 0,
             scale: 0.8,
-            transition: { duration: 300 }
+            transition: { duration: 300 },
           }"
-          :hover="{ 
-            y: -10, 
-            transition: { duration: 200 }
+          :hover="{
+            y: -10,
+            transition: { duration: 200 },
           }"
         >
           <div class="project-image">

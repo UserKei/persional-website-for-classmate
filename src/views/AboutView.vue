@@ -5,7 +5,7 @@
       <section class="about-header">
         <div class="about-content">
           <div class="about-image">
-            <div 
+            <div
               class="avatar"
               v-motion
               :initial="{ scale: 0, rotate: 180 }"
@@ -15,7 +15,7 @@
             </div>
           </div>
           <div class="about-text">
-            <h1 
+            <h1
               class="about-title"
               v-motion
               :initial="{ opacity: 0, x: -100 }"
@@ -23,7 +23,7 @@
             >
               关于我
             </h1>
-            <h2 
+            <h2
               class="about-subtitle"
               v-motion
               :initial="{ opacity: 0, x: -100 }"
@@ -31,7 +31,7 @@
             >
               计算机科学与技术专业在读
             </h2>
-            <p 
+            <p
               class="about-description"
               v-motion
               :initial="{ opacity: 0, x: -100 }"
@@ -46,7 +46,7 @@
 
       <!-- Timeline Section -->
       <section class="timeline-section">
-        <h2 
+        <h2
           class="section-title"
           v-motion
           :initial="{ opacity: 0, y: 50 }"
@@ -55,21 +55,21 @@
           教育经历
         </h2>
         <div class="timeline">
-          <div 
-            class="timeline-item" 
-            v-for="(item, index) in timeline" 
+          <div
+            class="timeline-item"
+            v-for="(item, index) in timeline"
             :key="item.id"
             v-motion
             :initial="{ opacity: 0, x: index % 2 === 0 ? -100 : 100, scale: 0.8 }"
-            :visible-once="{ 
-              opacity: 1, 
-              x: 0, 
+            :visible-once="{
+              opacity: 1,
+              x: 0,
               scale: 1,
-              transition: { 
-                duration: 700, 
+              transition: {
+                duration: 700,
                 delay: index * 200,
-                type: 'spring'
-              } 
+                type: 'spring',
+              },
             }"
           >
             <div class="timeline-marker"></div>
@@ -87,7 +87,7 @@
 
       <!-- Interests Section -->
       <section class="interests-section">
-        <h2 
+        <h2
           class="section-title"
           v-motion
           :initial="{ opacity: 0, y: 50 }"
@@ -96,21 +96,21 @@
           兴趣爱好
         </h2>
         <div class="interests-grid">
-          <div 
-            class="interest-card" 
-            v-for="(interest, index) in interests" 
+          <div
+            class="interest-card"
+            v-for="(interest, index) in interests"
             :key="interest.title"
             v-motion
             :initial="{ opacity: 0, y: 50, rotateY: 45 }"
-            :visible-once="{ 
-              opacity: 1, 
-              y: 0, 
+            :visible-once="{
+              opacity: 1,
+              y: 0,
               rotateY: 0,
-              transition: { 
-                duration: 600, 
+              transition: {
+                duration: 600,
                 delay: index * 100,
-                type: 'spring'
-              } 
+                type: 'spring',
+              },
             }"
           >
             <div class="interest-icon">{{ interest.icon }}</div>
@@ -122,7 +122,7 @@
 
       <!-- Values Section -->
       <section class="values-section">
-        <h2 
+        <h2
           class="section-title"
           v-motion
           :initial="{ opacity: 0, y: 50 }"
@@ -131,22 +131,22 @@
           个人理念
         </h2>
         <div class="values-grid">
-          <div 
-            class="value-item" 
-            v-for="(value, index) in values" 
+          <div
+            class="value-item"
+            v-for="(value, index) in values"
             :key="value.title"
             v-motion
             :initial="{ opacity: 0, scale: 0.5, rotate: -10 }"
-            :visible-once="{ 
-              opacity: 1, 
-              scale: 1, 
+            :visible-once="{
+              opacity: 1,
+              scale: 1,
               rotate: 0,
-              transition: { 
-                duration: 500, 
+              transition: {
+                duration: 500,
                 delay: index * 150,
                 type: 'spring',
-                stiffness: 120
-              } 
+                stiffness: 120,
+              },
             }"
           >
             <div class="value-icon">{{ value.icon }}</div>
