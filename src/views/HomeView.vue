@@ -43,22 +43,49 @@ const featuredProjects = ref([
     <section class="hero">
       <div class="hero-content">
         <div class="hero-text">
-          <h1 class="hero-title">
+          <h1 
+            class="hero-title"
+            v-motion
+            :initial="{ opacity: 0, y: 100 }"
+            :enter="{ opacity: 1, y: 0, transition: { duration: 800, delay: 200 } }"
+          >
             你好，我是
             <span class="highlight">张同学</span>
           </h1>
-          <h2 class="hero-subtitle">计算机专业大学生 | 全栈开发者</h2>
-          <p class="hero-description">
+          <h2 
+            class="hero-subtitle"
+            v-motion
+            :initial="{ opacity: 0, y: 50 }"
+            :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 400 } }"
+          >
+            计算机专业大学生 | 全栈开发者
+          </h2>
+          <p 
+            class="hero-description"
+            v-motion
+            :initial="{ opacity: 0, y: 30 }"
+            :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 600 } }"
+          >
             热爱编程，专注于Web开发和人工智能。目前在学习最新的技术栈，
             致力于用代码创造有价值的产品。
           </p>
-          <div class="hero-buttons">
+          <div 
+            class="hero-buttons"
+            v-motion
+            :initial="{ opacity: 0, y: 20 }"
+            :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 800 } }"
+          >
             <router-link to="/projects" class="btn btn-primary">查看项目</router-link>
             <router-link to="/contact" class="btn btn-secondary">联系我</router-link>
           </div>
         </div>
         <div class="hero-image">
-          <div class="code-animation">
+          <div 
+            class="code-animation"
+            v-motion
+            :initial="{ opacity: 0, x: 100, rotateY: 45 }"
+            :enter="{ opacity: 1, x: 0, rotateY: 0, transition: { duration: 1000, delay: 1000 } }"
+          >
             <div class="code-line">
               <span class="code-keyword">function</span>
               <span class="code-function">createAwesome</span>() {
@@ -76,9 +103,33 @@ const featuredProjects = ref([
     <!-- Skills Preview -->
     <section class="skills-preview">
       <div class="container">
-        <h2 class="section-title">技术栈</h2>
+        <h2 
+          class="section-title"
+          v-motion
+          :initial="{ opacity: 0, y: 50 }"
+          :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }"
+        >
+          技术栈
+        </h2>
         <div class="tech-grid">
-          <div class="tech-item" v-for="tech in techStack" :key="tech.name">
+          <div 
+            class="tech-item" 
+            v-for="(tech, index) in techStack" 
+            :key="tech.name"
+            v-motion
+            :initial="{ opacity: 0, y: 50, scale: 0.8 }"
+            :visible-once="{ 
+              opacity: 1, 
+              y: 0, 
+              scale: 1, 
+              transition: { 
+                duration: 500, 
+                delay: index * 100,
+                type: 'spring',
+                stiffness: 100
+              } 
+            }"
+          >
             <div class="tech-icon">{{ tech.icon }}</div>
             <span class="tech-name">{{ tech.name }}</span>
           </div>
@@ -89,9 +140,32 @@ const featuredProjects = ref([
     <!-- Projects Preview -->
     <section class="projects-preview">
       <div class="container">
-        <h2 class="section-title">精选项目</h2>
+        <h2 
+          class="section-title"
+          v-motion
+          :initial="{ opacity: 0, y: 50 }"
+          :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }"
+        >
+          精选项目
+        </h2>
         <div class="projects-grid">
-          <div class="project-card" v-for="project in featuredProjects" :key="project.id">
+          <div 
+            class="project-card" 
+            v-for="(project, index) in featuredProjects" 
+            :key="project.id"
+            v-motion
+            :initial="{ opacity: 0, y: 100, rotateX: 45 }"
+            :visible-once="{ 
+              opacity: 1, 
+              y: 0, 
+              rotateX: 0,
+              transition: { 
+                duration: 700, 
+                delay: index * 200,
+                type: 'spring'
+              } 
+            }"
+          >
             <div class="project-image">
               <div class="project-placeholder">{{ project.icon }}</div>
             </div>
@@ -104,7 +178,12 @@ const featuredProjects = ref([
             </div>
           </div>
         </div>
-        <div class="text-center">
+        <div 
+          class="text-center"
+          v-motion
+          :initial="{ opacity: 0, y: 30 }"
+          :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, delay: 800 } }"
+        >
           <router-link to="/projects" class="btn btn-outline">查看更多项目</router-link>
         </div>
       </div>

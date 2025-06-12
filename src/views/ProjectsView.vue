@@ -3,19 +3,38 @@
     <div class="container">
       <!-- Header -->
       <section class="projects-header">
-        <h1 class="page-title">我的项目</h1>
-        <p class="page-description">
+        <h1 
+          class="page-title"
+          v-motion
+          :initial="{ opacity: 0, y: -50 }"
+          :enter="{ opacity: 1, y: 0, transition: { duration: 600 } }"
+        >
+          我的项目
+        </h1>
+        <p 
+          class="page-description"
+          v-motion
+          :initial="{ opacity: 0, y: -30 }"
+          :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 200 } }"
+        >
           这里展示了我在学习过程中完成的一些项目，涵盖Web开发、移动应用等多个领域。
         </p>
       </section>
 
       <!-- Filter -->
       <section class="filter-section">
-        <div class="filter-buttons">
+        <div 
+          class="filter-buttons"
+          v-motion
+          :initial="{ opacity: 0, scale: 0.8 }"
+          :enter="{ opacity: 1, scale: 1, transition: { duration: 500, delay: 400 } }"
+        >
           <button
             class="filter-btn"
             :class="{ active: activeFilter === 'all' }"
             @click="setFilter('all')"
+            v-motion
+            :tap="{ scale: 0.95 }"
           >
             全部
           </button>
@@ -25,6 +44,8 @@
             @click="setFilter(category)"
             v-for="category in categories"
             :key="category"
+            v-motion
+            :tap="{ scale: 0.95 }"
           >
             {{ getCategoryName(category) }}
           </button>
@@ -33,7 +54,33 @@
 
       <!-- Projects Grid -->
       <section class="projects-grid">
-        <div class="project-card" v-for="project in filteredProjects" :key="project.id">
+        <div
+          class="project-card"
+          v-for="(project, index) in filteredProjects"
+          :key="project.id"
+          v-motion
+          :initial="{ opacity: 0, y: 50, scale: 0.9 }"
+          :enter="{ 
+            opacity: 1, 
+            y: 0, 
+            scale: 1,
+            transition: { 
+              duration: 500, 
+              delay: index * 100,
+              type: 'spring',
+              stiffness: 100
+            } 
+          }"
+          :leave="{ 
+            opacity: 0, 
+            scale: 0.8,
+            transition: { duration: 300 }
+          }"
+          :hover="{ 
+            y: -10, 
+            transition: { duration: 200 }
+          }"
+        >
           <div class="project-image">
             <div class="project-placeholder">{{ project.icon }}</div>
             <div class="project-overlay">

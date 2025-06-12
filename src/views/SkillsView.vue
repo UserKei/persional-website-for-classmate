@@ -3,32 +3,90 @@
     <div class="container">
       <!-- Header -->
       <section class="skills-header">
-        <h1 class="page-title">技能展示</h1>
-        <p class="page-description">
+        <h1 
+          class="page-title"
+          v-motion
+          :initial="{ opacity: 0, y: -50 }"
+          :enter="{ opacity: 1, y: 0, transition: { duration: 600 } }"
+        >
+          技能展示
+        </h1>
+        <p 
+          class="page-description"
+          v-motion
+          :initial="{ opacity: 0, y: -30 }"
+          :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 200 } }"
+        >
           在学习和实践中不断积累的技术栈，涵盖前端、后端、数据库等多个领域。
         </p>
       </section>
 
       <!-- Technical Skills -->
       <section class="technical-skills">
-        <h2 class="section-title">技术技能</h2>
+        <h2 
+          class="section-title"
+          v-motion
+          :initial="{ opacity: 0, y: 50 }"
+          :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }"
+        >
+          技术技能
+        </h2>
         <div class="skills-categories">
-          <div class="skill-category" v-for="category in skillCategories" :key="category.name">
+          <div 
+            class="skill-category" 
+            v-for="(category, categoryIndex) in skillCategories" 
+            :key="category.name"
+            v-motion
+            :initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            :visible-once="{ 
+              opacity: 1, 
+              y: 0, 
+              scale: 1,
+              transition: { 
+                duration: 600, 
+                delay: categoryIndex * 200,
+                type: 'spring'
+              } 
+            }"
+          >
             <h3 class="category-title">
               <span class="category-icon">{{ category.icon }}</span>
               {{ category.name }}
             </h3>
             <div class="skills-list">
-              <div class="skill-item" v-for="skill in category.skills" :key="skill.name">
+              <div 
+                class="skill-item" 
+                v-for="(skill, skillIndex) in category.skills" 
+                :key="skill.name"
+                v-motion
+                :initial="{ opacity: 0, x: -50 }"
+                :visible-once="{ 
+                  opacity: 1, 
+                  x: 0,
+                  transition: { 
+                    duration: 400, 
+                    delay: (categoryIndex * 200) + (skillIndex * 100)
+                  } 
+                }"
+              >
                 <div class="skill-info">
                   <span class="skill-name">{{ skill.name }}</span>
                   <span class="skill-level">{{ skill.level }}%</span>
                 </div>
                 <div class="skill-bar">
-                  <div
-                    class="skill-progress"
+                  <div 
+                    class="skill-progress" 
                     :style="{ width: skill.level + '%' }"
                     :class="getSkillLevelClass(skill.level)"
+                    v-motion
+                    :initial="{ width: '0%' }"
+                    :visible-once="{ 
+                      width: skill.level + '%',
+                      transition: { 
+                        duration: 1000, 
+                        delay: (categoryIndex * 200) + (skillIndex * 100) + 200
+                      } 
+                    }"
                   ></div>
                 </div>
                 <p class="skill-description">{{ skill.description }}</p>
@@ -40,9 +98,37 @@
 
       <!-- Tools & Technologies -->
       <section class="tools-section">
-        <h2 class="section-title">工具与技术</h2>
+        <h2 
+          class="section-title"
+          v-motion
+          :initial="{ opacity: 0, y: 50 }"
+          :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }"
+        >
+          工具与技术
+        </h2>
         <div class="tools-grid">
-          <div class="tool-card" v-for="tool in tools" :key="tool.name">
+          <div 
+            class="tool-card" 
+            v-for="(tool, index) in tools" 
+            :key="tool.name"
+            v-motion
+            :initial="{ opacity: 0, y: 50, rotateY: 45 }"
+            :visible-once="{ 
+              opacity: 1, 
+              y: 0, 
+              rotateY: 0,
+              transition: { 
+                duration: 500, 
+                delay: index * 100,
+                type: 'spring'
+              } 
+            }"
+            :hover="{ 
+              y: -5, 
+              scale: 1.05,
+              transition: { duration: 200 }
+            }"
+          >
             <div class="tool-icon">{{ tool.icon }}</div>
             <h3 class="tool-name">{{ tool.name }}</h3>
             <p class="tool-description">{{ tool.description }}</p>
@@ -55,16 +141,55 @@
 
       <!-- Learning Path -->
       <section class="learning-section">
-        <h2 class="section-title">学习路径</h2>
+        <h2 
+          class="section-title"
+          v-motion
+          :initial="{ opacity: 0, y: 50 }"
+          :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }"
+        >
+          学习路径
+        </h2>
         <div class="learning-timeline">
-          <div class="learning-item" v-for="item in learningPath" :key="item.id">
+          <div 
+            class="learning-item" 
+            v-for="(item, index) in learningPath" 
+            :key="item.id"
+            v-motion
+            :initial="{ opacity: 0, x: index % 2 === 0 ? -100 : 100, scale: 0.8 }"
+            :visible-once="{ 
+              opacity: 1, 
+              x: 0, 
+              scale: 1,
+              transition: { 
+                duration: 700, 
+                delay: index * 200,
+                type: 'spring'
+              } 
+            }"
+          >
             <div class="learning-marker"></div>
             <div class="learning-content">
               <div class="learning-period">{{ item.period }}</div>
               <h3 class="learning-title">{{ item.title }}</h3>
               <p class="learning-description">{{ item.description }}</p>
               <div class="learning-skills">
-                <span class="skill-tag" v-for="skill in item.skills" :key="skill">{{ skill }}</span>
+                <span 
+                  class="skill-tag" 
+                  v-for="(skill, skillIndex) in item.skills" 
+                  :key="skill"
+                  v-motion
+                  :initial="{ opacity: 0, scale: 0 }"
+                  :visible-once="{ 
+                    opacity: 1, 
+                    scale: 1,
+                    transition: { 
+                      duration: 300, 
+                      delay: (index * 200) + (skillIndex * 50) + 400
+                    } 
+                  }"
+                >
+                  {{ skill }}
+                </span>
               </div>
             </div>
           </div>
@@ -73,9 +198,37 @@
 
       <!-- Certificates -->
       <section class="certificates-section">
-        <h2 class="section-title">证书与成就</h2>
+        <h2 
+          class="section-title"
+          v-motion
+          :initial="{ opacity: 0, y: 50 }"
+          :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }"
+        >
+          证书与成就
+        </h2>
         <div class="certificates-grid">
-          <div class="certificate-card" v-for="cert in certificates" :key="cert.id">
+          <div 
+            class="certificate-card" 
+            v-for="(cert, index) in certificates" 
+            :key="cert.id"
+            v-motion
+            :initial="{ opacity: 0, y: 50, rotateX: 45 }"
+            :visible-once="{ 
+              opacity: 1, 
+              y: 0, 
+              rotateX: 0,
+              transition: { 
+                duration: 600, 
+                delay: index * 150,
+                type: 'spring'
+              } 
+            }"
+            :hover="{ 
+              y: -5, 
+              scale: 1.02,
+              transition: { duration: 200 }
+            }"
+          >
             <div class="certificate-icon">{{ cert.icon }}</div>
             <h3 class="certificate-title">{{ cert.title }}</h3>
             <p class="certificate-issuer">{{ cert.issuer }}</p>

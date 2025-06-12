@@ -12,15 +12,74 @@ onMounted(() => {
 </script>
 
 <template>
-  <nav class="navbar" :class="{ scrolled: isScrolled }">
+  <nav 
+    class="navbar" 
+    :class="{ 'scrolled': isScrolled }"
+    v-motion
+    :initial="{ y: -100, opacity: 0 }"
+    :enter="{ y: 0, opacity: 1, transition: { duration: 600, delay: 200 } }"
+  >
     <div class="nav-container">
-      <RouterLink to="/" class="nav-brand">张同学</RouterLink>
+      <RouterLink 
+        to="/" 
+        class="nav-brand"
+        v-motion
+        :initial="{ x: -50, opacity: 0 }"
+        :enter="{ x: 0, opacity: 1, transition: { duration: 500, delay: 400 } }"
+        :hover="{ scale: 1.1, transition: { duration: 200 } }"
+      >
+        张同学
+      </RouterLink>
       <div class="nav-menu">
-        <RouterLink to="/" class="nav-link">首页</RouterLink>
-        <RouterLink to="/about" class="nav-link">关于我</RouterLink>
-        <RouterLink to="/projects" class="nav-link">项目</RouterLink>
-        <RouterLink to="/skills" class="nav-link">技能</RouterLink>
-        <RouterLink to="/contact" class="nav-link">联系</RouterLink>
+        <RouterLink 
+          to="/" 
+          class="nav-link"
+          v-motion
+          :initial="{ y: -20, opacity: 0 }"
+          :enter="{ y: 0, opacity: 1, transition: { duration: 400, delay: 500 } }"
+          :hover="{ y: -2, transition: { duration: 200 } }"
+        >
+          首页
+        </RouterLink>
+        <RouterLink 
+          to="/about" 
+          class="nav-link"
+          v-motion
+          :initial="{ y: -20, opacity: 0 }"
+          :enter="{ y: 0, opacity: 1, transition: { duration: 400, delay: 600 } }"
+          :hover="{ y: -2, transition: { duration: 200 } }"
+        >
+          关于我
+        </RouterLink>
+        <RouterLink 
+          to="/projects" 
+          class="nav-link"
+          v-motion
+          :initial="{ y: -20, opacity: 0 }"
+          :enter="{ y: 0, opacity: 1, transition: { duration: 400, delay: 700 } }"
+          :hover="{ y: -2, transition: { duration: 200 } }"
+        >
+          项目
+        </RouterLink>
+        <RouterLink 
+          to="/skills" 
+          class="nav-link"
+          v-motion
+          :initial="{ y: -20, opacity: 0 }"
+          :enter="{ y: 0, opacity: 1, transition: { duration: 400, delay: 800 } }"
+          :hover="{ y: -2, transition: { duration: 200 } }"
+        >
+          技能
+        </RouterLink>        <RouterLink 
+          to="/contact" 
+          class="nav-link"
+          v-motion
+          :initial="{ y: -20, opacity: 0 }"
+          :enter="{ y: 0, opacity: 1, transition: { duration: 400, delay: 900 } }"
+          :hover="{ y: -2, transition: { duration: 200 } }"
+        >
+          联系
+        </RouterLink>
       </div>
     </div>
   </nav>
@@ -29,13 +88,41 @@ onMounted(() => {
     <RouterView />
   </main>
 
-  <footer class="footer">
+  <footer 
+    class="footer"
+    v-motion
+    :initial="{ opacity: 0, y: 50 }"
+    :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }"
+  >
     <div class="footer-content">
       <p>&copy; 2025 张同学. All rights reserved.</p>
       <div class="social-links">
-        <a href="https://github.com" target="_blank" class="social-link">GitHub</a>
-        <a href="https://linkedin.com" target="_blank" class="social-link">LinkedIn</a>
-        <a href="mailto:your-email@example.com" class="social-link">Email</a>
+        <a 
+          href="https://github.com" 
+          target="_blank" 
+          class="social-link"
+          v-motion
+          :hover="{ scale: 1.1, transition: { duration: 200 } }"
+        >
+          GitHub
+        </a>
+        <a 
+          href="https://linkedin.com" 
+          target="_blank" 
+          class="social-link"
+          v-motion
+          :hover="{ scale: 1.1, transition: { duration: 200 } }"
+        >
+          LinkedIn
+        </a>
+        <a 
+          href="mailto:your-email@example.com" 
+          class="social-link"
+          v-motion
+          :hover="{ scale: 1.1, transition: { duration: 200 } }"
+        >
+          Email
+        </a>
       </div>
     </div>
   </footer>
@@ -149,11 +236,11 @@ onMounted(() => {
     flex-direction: column;
     gap: 1rem;
   }
-
+  
   .nav-menu {
     gap: 1rem;
   }
-
+  
   .footer-content {
     flex-direction: column;
     gap: 1rem;

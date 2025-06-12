@@ -5,14 +5,38 @@
       <section class="about-header">
         <div class="about-content">
           <div class="about-image">
-            <div class="avatar">
+            <div 
+              class="avatar"
+              v-motion
+              :initial="{ scale: 0, rotate: 180 }"
+              :enter="{ scale: 1, rotate: 0, transition: { duration: 800, type: 'spring' } }"
+            >
               <span class="avatar-emoji">👨‍💻</span>
             </div>
           </div>
           <div class="about-text">
-            <h1 class="about-title">关于我</h1>
-            <h2 class="about-subtitle">计算机科学与技术专业在读</h2>
-            <p class="about-description">
+            <h1 
+              class="about-title"
+              v-motion
+              :initial="{ opacity: 0, x: -100 }"
+              :enter="{ opacity: 1, x: 0, transition: { duration: 600, delay: 200 } }"
+            >
+              关于我
+            </h1>
+            <h2 
+              class="about-subtitle"
+              v-motion
+              :initial="{ opacity: 0, x: -100 }"
+              :enter="{ opacity: 1, x: 0, transition: { duration: 600, delay: 400 } }"
+            >
+              计算机科学与技术专业在读
+            </h2>
+            <p 
+              class="about-description"
+              v-motion
+              :initial="{ opacity: 0, x: -100 }"
+              :enter="{ opacity: 1, x: 0, transition: { duration: 600, delay: 600 } }"
+            >
               我是一名热爱编程的计算机专业大学生，对Web开发、移动应用开发和人工智能领域充满热情。
               在学习过程中，我不断探索新技术，通过实际项目锻炼自己的编程能力。
             </p>
@@ -22,9 +46,32 @@
 
       <!-- Timeline Section -->
       <section class="timeline-section">
-        <h2 class="section-title">教育经历</h2>
+        <h2 
+          class="section-title"
+          v-motion
+          :initial="{ opacity: 0, y: 50 }"
+          :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }"
+        >
+          教育经历
+        </h2>
         <div class="timeline">
-          <div class="timeline-item" v-for="item in timeline" :key="item.id">
+          <div 
+            class="timeline-item" 
+            v-for="(item, index) in timeline" 
+            :key="item.id"
+            v-motion
+            :initial="{ opacity: 0, x: index % 2 === 0 ? -100 : 100, scale: 0.8 }"
+            :visible-once="{ 
+              opacity: 1, 
+              x: 0, 
+              scale: 1,
+              transition: { 
+                duration: 700, 
+                delay: index * 200,
+                type: 'spring'
+              } 
+            }"
+          >
             <div class="timeline-marker"></div>
             <div class="timeline-content">
               <div class="timeline-date">{{ item.date }}</div>
@@ -40,9 +87,32 @@
 
       <!-- Interests Section -->
       <section class="interests-section">
-        <h2 class="section-title">兴趣爱好</h2>
+        <h2 
+          class="section-title"
+          v-motion
+          :initial="{ opacity: 0, y: 50 }"
+          :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }"
+        >
+          兴趣爱好
+        </h2>
         <div class="interests-grid">
-          <div class="interest-card" v-for="interest in interests" :key="interest.title">
+          <div 
+            class="interest-card" 
+            v-for="(interest, index) in interests" 
+            :key="interest.title"
+            v-motion
+            :initial="{ opacity: 0, y: 50, rotateY: 45 }"
+            :visible-once="{ 
+              opacity: 1, 
+              y: 0, 
+              rotateY: 0,
+              transition: { 
+                duration: 600, 
+                delay: index * 100,
+                type: 'spring'
+              } 
+            }"
+          >
             <div class="interest-icon">{{ interest.icon }}</div>
             <h3 class="interest-title">{{ interest.title }}</h3>
             <p class="interest-description">{{ interest.description }}</p>
@@ -52,9 +122,33 @@
 
       <!-- Values Section -->
       <section class="values-section">
-        <h2 class="section-title">个人理念</h2>
+        <h2 
+          class="section-title"
+          v-motion
+          :initial="{ opacity: 0, y: 50 }"
+          :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }"
+        >
+          个人理念
+        </h2>
         <div class="values-grid">
-          <div class="value-item" v-for="value in values" :key="value.title">
+          <div 
+            class="value-item" 
+            v-for="(value, index) in values" 
+            :key="value.title"
+            v-motion
+            :initial="{ opacity: 0, scale: 0.5, rotate: -10 }"
+            :visible-once="{ 
+              opacity: 1, 
+              scale: 1, 
+              rotate: 0,
+              transition: { 
+                duration: 500, 
+                delay: index * 150,
+                type: 'spring',
+                stiffness: 120
+              } 
+            }"
+          >
             <div class="value-icon">{{ value.icon }}</div>
             <h3 class="value-title">{{ value.title }}</h3>
             <p class="value-description">{{ value.description }}</p>

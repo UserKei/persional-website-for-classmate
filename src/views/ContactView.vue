@@ -3,8 +3,20 @@
     <div class="container">
       <!-- Header -->
       <section class="contact-header">
-        <h1 class="page-title">联系我</h1>
-        <p class="page-description">
+        <h1 
+          class="page-title"
+          v-motion
+          :initial="{ opacity: 0, y: -50 }"
+          :enter="{ opacity: 1, y: 0, transition: { duration: 600 } }"
+        >
+          联系我
+        </h1>
+        <p 
+          class="page-description"
+          v-motion
+          :initial="{ opacity: 0, y: -30 }"
+          :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 200 } }"
+        >
           很高兴认识您！如果您有任何问题或合作意向，欢迎通过以下方式联系我。
         </p>
       </section>
@@ -12,17 +24,47 @@
       <div class="contact-content">
         <!-- Contact Info -->
         <section class="contact-info">
-          <h2 class="section-title">联系方式</h2>
+          <h2 
+            class="section-title"
+            v-motion
+            :initial="{ opacity: 0, x: -50 }"
+            :visible-once="{ opacity: 1, x: 0, transition: { duration: 600 } }"
+          >
+            联系方式
+          </h2>
           <div class="contact-cards">
-            <div class="contact-card" v-for="contact in contactMethods" :key="contact.type">
+            <div 
+              class="contact-card" 
+              v-for="(contact, index) in contactMethods" 
+              :key="contact.type"
+              v-motion
+              :initial="{ opacity: 0, y: 50, scale: 0.8 }"
+              :visible-once="{ 
+                opacity: 1, 
+                y: 0, 
+                scale: 1,
+                transition: { 
+                  duration: 500, 
+                  delay: index * 100,
+                  type: 'spring'
+                } 
+              }"
+              :hover="{ 
+                y: -5, 
+                scale: 1.05,
+                transition: { duration: 200 }
+              }"
+            >
               <div class="contact-icon">{{ contact.icon }}</div>
               <h3 class="contact-title">{{ contact.title }}</h3>
               <p class="contact-value">{{ contact.value }}</p>
               <p class="contact-description">{{ contact.description }}</p>
-              <a
-                :href="contact.link"
+              <a 
+                :href="contact.link" 
                 class="contact-button"
                 :target="contact.external ? '_blank' : '_self'"
+                v-motion
+                :tap="{ scale: 0.95 }"
               >
                 {{ contact.buttonText }}
               </a>
@@ -32,55 +74,96 @@
 
         <!-- Contact Form -->
         <section class="contact-form-section">
-          <h2 class="section-title">发送消息</h2>
-          <form class="contact-form" @submit.prevent="submitForm">
+          <h2 
+            class="section-title"
+            v-motion
+            :initial="{ opacity: 0, x: 50 }"
+            :visible-once="{ opacity: 1, x: 0, transition: { duration: 600 } }"
+          >
+            发送消息
+          </h2>
+          <form 
+            class="contact-form" 
+            @submit.prevent="submitForm"
+            v-motion
+            :initial="{ opacity: 0, y: 50 }"
+            :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, delay: 200 } }"
+          >
             <div class="form-row">
-              <div class="form-group">
+              <div 
+                class="form-group"
+                v-motion
+                :initial="{ opacity: 0, x: -30 }"
+                :visible-once="{ opacity: 1, x: 0, transition: { duration: 400, delay: 300 } }"
+              >
                 <label for="name">姓名 *</label>
-                <input
-                  type="text"
-                  id="name"
-                  v-model="form.name"
+                <input 
+                  type="text" 
+                  id="name" 
+                  v-model="form.name" 
                   required
                   :class="{ error: errors.name }"
                 />
                 <span class="error-message" v-if="errors.name">{{ errors.name }}</span>
               </div>
-              <div class="form-group">
+              <div 
+                class="form-group"
+                v-motion
+                :initial="{ opacity: 0, x: 30 }"
+                :visible-once="{ opacity: 1, x: 0, transition: { duration: 400, delay: 400 } }"
+              >
                 <label for="email">邮箱 *</label>
-                <input
-                  type="email"
-                  id="email"
-                  v-model="form.email"
+                <input 
+                  type="email" 
+                  id="email" 
+                  v-model="form.email" 
                   required
                   :class="{ error: errors.email }"
                 />
                 <span class="error-message" v-if="errors.email">{{ errors.email }}</span>
               </div>
             </div>
-            <div class="form-group">
+            <div 
+              class="form-group"
+              v-motion
+              :initial="{ opacity: 0, y: 30 }"
+              :visible-once="{ opacity: 1, y: 0, transition: { duration: 400, delay: 500 } }"
+            >
               <label for="subject">主题 *</label>
-              <input
-                type="text"
-                id="subject"
-                v-model="form.subject"
+              <input 
+                type="text" 
+                id="subject" 
+                v-model="form.subject" 
                 required
                 :class="{ error: errors.subject }"
               />
               <span class="error-message" v-if="errors.subject">{{ errors.subject }}</span>
             </div>
-            <div class="form-group">
+            <div 
+              class="form-group"
+              v-motion
+              :initial="{ opacity: 0, y: 30 }"
+              :visible-once="{ opacity: 1, y: 0, transition: { duration: 400, delay: 600 } }"
+            >
               <label for="message">消息内容 *</label>
-              <textarea
-                id="message"
-                v-model="form.message"
-                rows="6"
+              <textarea 
+                id="message" 
+                v-model="form.message" 
+                rows="6" 
                 required
                 :class="{ error: errors.message }"
               ></textarea>
               <span class="error-message" v-if="errors.message">{{ errors.message }}</span>
             </div>
-            <button type="submit" class="submit-button" :disabled="isSubmitting">
+            <button 
+              type="submit" 
+              class="submit-button" 
+              :disabled="isSubmitting"
+              v-motion
+              :initial="{ opacity: 0, scale: 0.8 }"
+              :visible-once="{ opacity: 1, scale: 1, transition: { duration: 400, delay: 700 } }"
+              :tap="{ scale: 0.95 }"
+            >
               <span v-if="!isSubmitting">发送消息</span>
               <span v-else>发送中...</span>
             </button>
@@ -90,14 +173,38 @@
 
       <!-- Social Media -->
       <section class="social-section">
-        <h2 class="section-title">社交媒体</h2>
+        <h2 
+          class="section-title"
+          v-motion
+          :initial="{ opacity: 0, y: 50 }"
+          :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }"
+        >
+          社交媒体
+        </h2>
         <div class="social-grid">
-          <a
-            v-for="social in socialMedia"
+          <a 
+            v-for="(social, index) in socialMedia" 
             :key="social.name"
-            :href="social.link"
+            :href="social.link" 
             target="_blank"
             class="social-card"
+            v-motion
+            :initial="{ opacity: 0, y: 30, scale: 0.8 }"
+            :visible-once="{ 
+              opacity: 1, 
+              y: 0, 
+              scale: 1,
+              transition: { 
+                duration: 400, 
+                delay: index * 80,
+                type: 'spring'
+              } 
+            }"
+            :hover="{ 
+              y: -3, 
+              scale: 1.05,
+              transition: { duration: 200 }
+            }"
           >
             <div class="social-icon">{{ social.icon }}</div>
             <h3 class="social-name">{{ social.name }}</h3>
@@ -108,10 +215,36 @@
 
       <!-- FAQ -->
       <section class="faq-section">
-        <h2 class="section-title">常见问题</h2>
+        <h2 
+          class="section-title"
+          v-motion
+          :initial="{ opacity: 0, y: 50 }"
+          :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }"
+        >
+          常见问题
+        </h2>
         <div class="faq-list">
-          <div class="faq-item" v-for="faq in faqs" :key="faq.id">
-            <div class="faq-question" @click="toggleFaq(faq.id)">
+          <div 
+            class="faq-item" 
+            v-for="(faq, index) in faqs" 
+            :key="faq.id"
+            v-motion
+            :initial="{ opacity: 0, x: -50 }"
+            :visible-once="{ 
+              opacity: 1, 
+              x: 0,
+              transition: { 
+                duration: 500, 
+                delay: index * 100
+              } 
+            }"
+          >
+            <div 
+              class="faq-question" 
+              @click="toggleFaq(faq.id)"
+              v-motion
+              :tap="{ scale: 0.98 }"
+            >
               <h3>{{ faq.question }}</h3>
               <span class="faq-toggle" :class="{ active: faq.isOpen }">+</span>
             </div>
