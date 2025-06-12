@@ -1,0 +1,514 @@
+/* 赛博朋克高级视觉特效 */
+
+/* 故障文本动画 */
+.glitch-text {
+  position: relative;
+  color: var(--cyber-primary);
+  font-family: 'Orbitron', monospace;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-text::before {
+  animation: glitch-anim-1 0.5s infinite;
+  color: var(--cyber-accent);
+  z-index: -1;
+}
+
+.glitch-text::after {
+  animation: glitch-anim-2 0.5s infinite;
+  color: var(--cyber-secondary);
+  z-index: -2;
+}
+
+@keyframes glitch-anim-1 {
+  0% {
+    clip: rect(42px, 9999px, 44px, 0);
+    transform: skew(0.85deg);
+  }
+  5% {
+    clip: rect(12px, 9999px, 59px, 0);
+    transform: skew(0.4deg);
+  }
+  10% {
+    clip: rect(59px, 9999px, 29px, 0);
+    transform: skew(0.7deg);
+  }
+  15% {
+    clip: rect(2px, 9999px, 99px, 0);
+    transform: skew(0.1deg);
+  }
+  20% {
+    clip: rect(41px, 9999px, 42px, 0);
+    transform: skew(0.8deg);
+  }
+  25% {
+    clip: rect(25px, 9999px, 12px, 0);
+    transform: skew(1deg);
+  }
+  30% {
+    clip: rect(59px, 9999px, 54px, 0);
+    transform: skew(0.37deg);
+  }
+  35% {
+    clip: rect(84px, 9999px, 85px, 0);
+    transform: skew(0.91deg);
+  }
+  40% {
+    clip: rect(91px, 9999px, 81px, 0);
+    transform: skew(0.72deg);
+  }
+  45% {
+    clip: rect(32px, 9999px, 51px, 0);
+    transform: skew(0.52deg);
+  }
+  50% {
+    clip: rect(1px, 9999px, 76px, 0);
+    transform: skew(0.38deg);
+  }
+  55% {
+    clip: rect(86px, 9999px, 31px, 0);
+    transform: skew(0.69deg);
+  }
+  60% {
+    clip: rect(95px, 9999px, 98px, 0);
+    transform: skew(0.95deg);
+  }
+  65% {
+    clip: rect(78px, 9999px, 62px, 0);
+    transform: skew(0.24deg);
+  }
+  70% {
+    clip: rect(17px, 9999px, 5px, 0);
+    transform: skew(0.61deg);
+  }
+  75% {
+    clip: rect(51px, 9999px, 70px, 0);
+    transform: skew(0.05deg);
+  }
+  80% {
+    clip: rect(34px, 9999px, 79px, 0);
+    transform: skew(0.35deg);
+  }
+  85% {
+    clip: rect(65px, 9999px, 15px, 0);
+    transform: skew(0.75deg);
+  }
+  90% {
+    clip: rect(29px, 9999px, 37px, 0);
+    transform: skew(0.19deg);
+  }
+  95% {
+    clip: rect(44px, 9999px, 88px, 0);
+    transform: skew(0.86deg);
+  }
+  100% {
+    clip: rect(10px, 9999px, 58px, 0);
+    transform: skew(0.63deg);
+  }
+}
+
+@keyframes glitch-anim-2 {
+  0% {
+    clip: rect(65px, 9999px, 100px, 0);
+    transform: skew(0.02deg);
+  }
+  5% {
+    clip: rect(52px, 9999px, 74px, 0);
+    transform: skew(0.15deg);
+  }
+  10% {
+    clip: rect(79px, 9999px, 85px, 0);
+    transform: skew(0.94deg);
+  }
+  15% {
+    clip: rect(12px, 9999px, 22px, 0);
+    transform: skew(0.81deg);
+  }
+  20% {
+    clip: rect(63px, 9999px, 27px, 0);
+    transform: skew(0.69deg);
+  }
+  25% {
+    clip: rect(91px, 9999px, 82px, 0);
+    transform: skew(0.32deg);
+  }
+  30% {
+    clip: rect(76px, 9999px, 31px, 0);
+    transform: skew(0.17deg);
+  }
+  35% {
+    clip: rect(40px, 9999px, 65px, 0);
+    transform: skew(0.04deg);
+  }
+  40% {
+    clip: rect(30px, 9999px, 36px, 0);
+    transform: skew(0.42deg);
+  }
+  45% {
+    clip: rect(22px, 9999px, 16px, 0);
+    transform: skew(0.18deg);
+  }
+  50% {
+    clip: rect(57px, 9999px, 98px, 0);
+    transform: skew(0.11deg);
+  }
+  55% {
+    clip: rect(83px, 9999px, 54px, 0);
+    transform: skew(0.33deg);
+  }
+  60% {
+    clip: rect(37px, 9999px, 17px, 0);
+    transform: skew(0.99deg);
+  }
+  65% {
+    clip: rect(71px, 9999px, 75px, 0);
+    transform: skew(0.85deg);
+  }
+  70% {
+    clip: rect(97px, 9999px, 8px, 0);
+    transform: skew(0.01deg);
+  }
+  75% {
+    clip: rect(48px, 9999px, 13px, 0);
+    transform: skew(0.68deg);
+  }
+  80% {
+    clip: rect(18px, 9999px, 69px, 0);
+    transform: skew(0.9deg);
+  }
+  85% {
+    clip: rect(54px, 9999px, 84px, 0);
+    transform: skew(0.77deg);
+  }
+  90% {
+    clip: rect(45px, 9999px, 61px, 0);
+    transform: skew(0.23deg);
+  }
+  95% {
+    clip: rect(60px, 9999px, 43px, 0);
+    transform: skew(0.15deg);
+  }
+  100% {
+    clip: rect(14px, 9999px, 100px, 0);
+    transform: skew(0.07deg);
+  }
+}
+
+/* 全息投影效果 */
+.hologram-text {
+  position: relative;
+  color: var(--cyber-primary);
+  text-shadow: 0 0 10px var(--cyber-primary);
+  animation: hologram-flicker 2s infinite;
+}
+
+.hologram-text::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 255, 159, 0.1) 50%, transparent 100%);
+  animation: hologram-scan 3s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes hologram-flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  98% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes hologram-scan {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* 矩阵数字雨效果 */
+.matrix-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -10;
+  overflow: hidden;
+}
+
+.matrix-bg::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  background-image:
+    radial-gradient(circle, var(--cyber-primary) 1px, transparent 1px),
+    radial-gradient(circle, var(--cyber-accent) 1px, transparent 1px);
+  background-size:
+    50px 50px,
+    30px 30px;
+  background-position:
+    0 0,
+    25px 25px;
+  animation: matrix-fall 20s linear infinite;
+  opacity: 0.1;
+}
+
+@keyframes matrix-fall {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+/* 扫描线效果 */
+.scan-lines {
+  position: relative;
+  overflow: hidden;
+}
+
+.scan-lines::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 159, 0.03) 2px,
+    rgba(0, 255, 159, 0.03) 4px
+  );
+  pointer-events: none;
+  animation: scan-lines-move 0.1s linear infinite;
+}
+
+@keyframes scan-lines-move {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(4px);
+  }
+}
+
+/* 电路板背景 */
+.circuit-bg {
+  position: relative;
+}
+
+.circuit-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    linear-gradient(90deg, rgba(0, 255, 159, 0.1) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0, 255, 159, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.3;
+  pointer-events: none;
+  animation: circuit-pulse 4s ease-in-out infinite;
+}
+
+@keyframes circuit-pulse {
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* 能量脉冲效果 */
+.energy-pulse {
+  position: relative;
+  overflow: hidden;
+}
+
+.energy-pulse::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyber-primary), transparent);
+  animation: energy-pulse-move 2s ease-in-out infinite;
+  box-shadow: 0 0 10px var(--cyber-primary);
+}
+
+@keyframes energy-pulse-move {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* HUD界面效果 */
+.hud-border {
+  position: relative;
+  border: 1px solid var(--cyber-primary);
+  border-radius: 10px;
+}
+
+.hud-border::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  background: linear-gradient(
+    45deg,
+    var(--cyber-primary),
+    var(--cyber-accent),
+    var(--cyber-secondary),
+    var(--cyber-primary)
+  );
+  border-radius: 10px;
+  z-index: -1;
+  animation: hud-border-rotate 3s linear infinite;
+}
+
+@keyframes hud-border-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* 数据流效果 */
+.data-stream {
+  position: relative;
+  overflow: hidden;
+}
+
+.data-stream::before {
+  content: '01010101 11001100 10101010 01100110';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  font-family: 'Courier New', monospace;
+  font-size: 8px;
+  color: var(--cyber-primary);
+  opacity: 0.2;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  animation: data-stream-flow 5s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes data-stream-flow {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* 故障干扰效果 */
+.cyber-interference {
+  position: relative;
+}
+
+.cyber-interference::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 70%,
+      rgba(255, 0, 128, 0.1) 70%,
+      rgba(255, 0, 128, 0.1) 71%,
+      transparent 71%
+    ),
+    linear-gradient(
+      90deg,
+      transparent 25%,
+      rgba(0, 212, 255, 0.1) 25%,
+      rgba(0, 212, 255, 0.1) 26%,
+      transparent 26%
+    );
+  animation: interference-glitch 0.3s infinite;
+  pointer-events: none;
+}
+
+@keyframes interference-glitch {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-2px);
+  }
+  40% {
+    transform: translateX(2px);
+  }
+  60% {
+    transform: translateX(-1px);
+  }
+  80% {
+    transform: translateX(1px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .glitch-text::before,
+  .glitch-text::after {
+    display: none;
+  }
+
+  .matrix-bg::before {
+    animation-duration: 30s;
+  }
+
+  .hologram-text::before {
+    animation-duration: 4s;
+  }
+}

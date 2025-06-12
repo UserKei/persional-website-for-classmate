@@ -1,6 +1,22 @@
 @import './base.css';
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
 
-@import './base.css';
+/* 赛博朋克色彩变量 */
+:root {
+  --cyber-primary: #00ff9f;
+  --cyber-secondary: #ff0080;
+  --cyber-accent: #00d4ff;
+  --cyber-yellow: #ffff00;
+  --cyber-purple: #8b00ff;
+  --cyber-red: #ff0040;
+  --cyber-dark: #0a0a0a;
+  --cyber-darker: #050505;
+  --cyber-gray: #1a1a1a;
+  --cyber-light-gray: #2a2a2a;
+  --cyber-text: #e0e0e0;
+  --cyber-text-dim: #a0a0a0;
+  --cyber-glow: 0 0 20px;
+}
 
 /* 全局样式重置和基础设置 */
 * {
@@ -10,10 +26,116 @@
 }
 
 body {
-  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Rajdhani', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  color: #2c3e50;
-  background-color: #f8f9fa;
+  color: var(--cyber-text);
+  background: linear-gradient(135deg, var(--cyber-dark) 0%, var(--cyber-darker) 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+/* 赛博朋克背景网格效果 */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(0, 255, 159, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 159, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: -2;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+/* 故障效果 */
+.glitch {
+  position: relative;
+  color: var(--cyber-primary);
+  font-weight: 700;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  animation: glitch-1 2s infinite;
+  color: var(--cyber-red);
+  z-index: -1;
+}
+
+.glitch::after {
+  animation: glitch-2 2s infinite;
+  color: var(--cyber-accent);
+  z-index: -2;
+}
+
+@keyframes glitch-1 {
+  0%,
+  14%,
+  15%,
+  49%,
+  50%,
+  99%,
+  100% {
+    transform: translate(0);
+  }
+  15%,
+  49% {
+    transform: translate(-2px, 1px);
+  }
+}
+
+@keyframes glitch-2 {
+  0%,
+  20%,
+  21%,
+  62%,
+  63%,
+  99%,
+  100% {
+    transform: translate(0);
+  }
+  21%,
+  62% {
+    transform: translate(2px, -1px);
+  }
+}
+
+/* 霓虹发光效果 */
+.neon {
+  text-shadow:
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor,
+    0 0 20px var(--cyber-primary);
+}
+
+.neon-box {
+  box-shadow:
+    0 0 5px var(--cyber-primary),
+    0 0 10px var(--cyber-primary),
+    0 0 15px var(--cyber-primary),
+    inset 0 0 5px rgba(0, 255, 159, 0.2);
+  border: 1px solid var(--cyber-primary);
 }
 
 /* 平滑滚动 */
@@ -23,29 +145,43 @@ html {
 
 /* 链接样式 */
 a {
-  color: #3498db;
+  color: var(--cyber-primary);
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 a:hover {
-  color: #2980b9;
+  color: var(--cyber-accent);
+  text-shadow: var(--cyber-glow) var(--cyber-accent);
 }
 
 /* 按钮基础样式 */
 button {
-  font-family: inherit;
+  font-family: 'Orbitron', inherit;
   cursor: pointer;
   border: none;
   outline: none;
+  background: transparent;
 }
 
 /* 输入框基础样式 */
 input,
 textarea,
 select {
-  font-family: inherit;
+  font-family: 'Rajdhani', inherit;
   font-size: inherit;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid var(--cyber-primary);
+  color: var(--cyber-text);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 10px var(--cyber-primary);
+  border-color: var(--cyber-accent);
 }
 
 /* 图片响应式 */
@@ -61,33 +197,45 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 600;
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
   line-height: 1.2;
   margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
+  color: var(--cyber-primary);
+  text-shadow: var(--cyber-glow) var(--cyber-primary);
 }
 h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
+  color: var(--cyber-accent);
+  text-shadow: var(--cyber-glow) var(--cyber-accent);
 }
 h3 {
-  font-size: 1.5rem;
+  font-size: 2rem;
+  color: var(--cyber-secondary);
 }
 h4 {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  color: var(--cyber-yellow);
 }
 h5 {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  color: var(--cyber-purple);
 }
 h6 {
   font-size: 1rem;
+  color: var(--cyber-text);
 }
 
 /* 段落样式 */
 p {
   margin-bottom: 1rem;
+  color: var(--cyber-text);
 }
 
 /* 列表样式 */
@@ -107,62 +255,111 @@ ol {
 /* 按钮通用样式 */
 .btn {
   display: inline-block;
-  padding: 0.8rem 2rem;
-  border-radius: 30px;
+  padding: 1rem 2rem;
+  border-radius: 0;
   text-decoration: none;
   font-weight: 600;
   text-align: center;
   transition: all 0.3s ease;
   cursor: pointer;
-  border: none;
+  border: 2px solid;
   font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Orbitron', monospace;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #3498db, #2980b9);
-  color: white;
+  background: rgba(0, 255, 159, 0.1);
+  color: var(--cyber-primary);
+  border-color: var(--cyber-primary);
+  box-shadow: 0 0 20px rgba(0, 255, 159, 0.3);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #2980b9, #1f4e79);
+  background: var(--cyber-primary);
+  color: var(--cyber-dark);
+  box-shadow: 0 0 30px var(--cyber-primary);
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
 }
 
 .btn-secondary {
   background: transparent;
-  color: #3498db;
-  border: 2px solid #3498db;
+  color: var(--cyber-accent);
+  border-color: var(--cyber-accent);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
 }
 
 .btn-secondary:hover {
-  background: #3498db;
-  color: white;
+  background: var(--cyber-accent);
+  color: var(--cyber-dark);
+  box-shadow: 0 0 30px var(--cyber-accent);
 }
 
 .btn-outline {
   background: transparent;
-  border: 2px solid currentColor;
+  border-color: var(--cyber-secondary);
+  color: var(--cyber-secondary);
+  box-shadow: 0 0 20px rgba(255, 0, 128, 0.3);
 }
 
 .btn-outline:hover {
-  background: currentColor;
-  color: white;
+  background: var(--cyber-secondary);
+  color: var(--cyber-dark);
+  box-shadow: 0 0 30px var(--cyber-secondary);
 }
 
 /* 卡片通用样式 */
 .card {
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--cyber-primary);
+  border-radius: 0;
+  box-shadow:
+    0 0 20px rgba(0, 255, 159, 0.2),
+    inset 0 0 20px rgba(0, 255, 159, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyber-primary), transparent);
+  transition: left 0.5s;
+}
+
+.card:hover::before {
+  left: 100%;
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  box-shadow:
+    0 10px 40px rgba(0, 255, 159, 0.4),
+    inset 0 0 20px rgba(0, 255, 159, 0.1);
+  border-color: var(--cyber-accent);
 }
 
 /* 加载动画 */
@@ -170,9 +367,9 @@ ol {
   display: inline-block;
   width: 20px;
   height: 20px;
-  border: 3px solid rgba(255, 255, 255, 0.3);
+  border: 3px solid rgba(0, 255, 159, 0.3);
   border-radius: 50%;
-  border-top-color: #fff;
+  border-top-color: var(--cyber-primary);
   animation: spin 1s ease-in-out infinite;
 }
 
@@ -198,6 +395,29 @@ ol {
   }
 }
 
+/* 赛博朋克扫描线效果 */
+.scan-lines::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(transparent 50%, rgba(0, 255, 159, 0.03) 50%);
+  background-size: 100% 4px;
+  animation: scanlines 0.1s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scanlines {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 4px;
+  }
+}
+
 /* 工具类 */
 .text-center {
   text-align: center;
@@ -209,49 +429,23 @@ ol {
   text-align: right;
 }
 
-.mt-1 {
-  margin-top: 0.5rem;
+.cyber-primary {
+  color: var(--cyber-primary);
 }
-.mt-2 {
-  margin-top: 1rem;
+.cyber-secondary {
+  color: var(--cyber-secondary);
 }
-.mt-3 {
-  margin-top: 1.5rem;
+.cyber-accent {
+  color: var(--cyber-accent);
 }
-.mt-4 {
-  margin-top: 2rem;
-}
-
-.mb-1 {
-  margin-bottom: 0.5rem;
-}
-.mb-2 {
-  margin-bottom: 1rem;
-}
-.mb-3 {
-  margin-bottom: 1.5rem;
-}
-.mb-4 {
-  margin-bottom: 2rem;
-}
-
-.p-1 {
-  padding: 0.5rem;
-}
-.p-2 {
-  padding: 1rem;
-}
-.p-3 {
-  padding: 1.5rem;
-}
-.p-4 {
-  padding: 2rem;
+.cyber-yellow {
+  color: var(--cyber-yellow);
 }
 
 /* 响应式网格 */
 .grid {
   display: grid;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .grid-2 {
@@ -272,13 +466,13 @@ ol {
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
   h2 {
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
   h3 {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 
   .container {
@@ -286,33 +480,37 @@ ol {
   }
 
   .btn {
-    padding: 0.7rem 1.5rem;
+    padding: 0.8rem 1.5rem;
     font-size: 0.9rem;
   }
 }
 
 /* 滚动条样式 */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--cyber-dark);
+  border: 1px solid var(--cyber-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 4px;
+  background: linear-gradient(var(--cyber-primary), var(--cyber-accent));
+  border-radius: 0;
+  box-shadow: 0 0 10px var(--cyber-primary);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
+  background: linear-gradient(var(--cyber-accent), var(--cyber-secondary));
+  box-shadow: 0 0 15px var(--cyber-accent);
 }
 
 /* 选择文本样式 */
 ::selection {
-  background: #3498db;
-  color: white;
+  background: var(--cyber-primary);
+  color: var(--cyber-dark);
+  text-shadow: none;
 }
 
 /* 焦点样式 */
@@ -320,8 +518,8 @@ input:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  border-color: #3498db;
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+  border-color: var(--cyber-accent);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
 }
 
 /* 打印样式 */
@@ -329,6 +527,8 @@ select:focus {
   * {
     color: black !important;
     background: white !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
   }
 
   .navbar,

@@ -44,13 +44,14 @@ const featuredProjects = ref([
       <div class="hero-content">
         <div class="hero-text">
           <h1
-            class="hero-title"
+            class="hero-title glitch-text"
+            data-text="你好，我是 张同学"
             v-motion
             :initial="{ opacity: 0, y: 100 }"
             :enter="{ opacity: 1, y: 0, transition: { duration: 800, delay: 200 } }"
           >
             你好，我是
-            <span class="highlight">张同学</span>
+            <span class="highlight hologram-text">张同学</span>
           </h1>
           <h2
             class="hero-subtitle"
@@ -81,12 +82,12 @@ const featuredProjects = ref([
         </div>
         <div class="hero-image">
           <div
-            class="code-animation"
+            class="code-animation hud-border scan-lines cyber-interference"
             v-motion
             :initial="{ opacity: 0, x: 100, rotateY: 45 }"
             :enter="{ opacity: 1, x: 0, rotateY: 0, transition: { duration: 1000, delay: 1000 } }"
           >
-            <div class="code-line">
+            <div class="code-line data-stream">
               <span class="code-keyword">function</span>
               <span class="code-function">createAwesome</span>() {
             </div>
@@ -95,6 +96,7 @@ const featuredProjects = ref([
               <span class="code-string">'Hello World!'</span>;
             </div>
             <div class="code-line">}</div>
+            <div class="code-cursor"></div>
           </div>
         </div>
       </div>
@@ -104,7 +106,8 @@ const featuredProjects = ref([
     <section class="skills-preview">
       <div class="container">
         <h2
-          class="section-title"
+          class="section-title hologram-text"
+          data-text="技术栈"
           v-motion
           :initial="{ opacity: 0, y: 50 }"
           :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }"
@@ -113,7 +116,7 @@ const featuredProjects = ref([
         </h2>
         <div class="tech-grid">
           <div
-            class="tech-item"
+            class="tech-item energy-pulse data-stream"
             v-for="(tech, index) in techStack"
             :key="tech.name"
             v-motion
@@ -141,7 +144,8 @@ const featuredProjects = ref([
     <section class="projects-preview">
       <div class="container">
         <h2
-          class="section-title"
+          class="section-title glitch-text"
+          data-text="精选项目"
           v-motion
           :initial="{ opacity: 0, y: 50 }"
           :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }"
@@ -194,15 +198,17 @@ const featuredProjects = ref([
 <style scoped>
 .home {
   min-height: 100vh;
+  padding-top: 0; /* 移除这里的padding，因为main-content已经有了 */
 }
 
 .hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: transparent; /* 使用全局的赛博朋克背景 */
+  color: var(--cyber-text);
   padding: 4rem 0;
   min-height: 70vh;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .hero-content {
@@ -223,7 +229,8 @@ const featuredProjects = ref([
 }
 
 .highlight {
-  color: #ffd700;
+  color: var(--cyber-primary);
+  text-shadow: var(--cyber-glow) var(--cyber-primary);
 }
 
 .hero-subtitle {
@@ -247,69 +254,203 @@ const featuredProjects = ref([
 
 .btn {
   padding: 0.8rem 2rem;
-  border-radius: 30px;
+  border-radius: 0;
   text-decoration: none;
   font-weight: 600;
+  font-family: 'Orbitron', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   transition: all 0.3s ease;
   display: inline-block;
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 15px) 0,
+    100% 15px,
+    100% 100%,
+    15px 100%,
+    0 calc(100% - 15px)
+  );
 }
 
 .btn-primary {
-  background: #ffd700;
-  color: #333;
+  background: var(--cyber-primary);
+  color: var(--cyber-dark);
+  border: 2px solid var(--cyber-primary);
+  box-shadow: 0 0 20px rgba(0, 255, 159, 0.3);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: 2px solid var(--cyber-primary);
+  transition: left 0.3s ease;
+  z-index: -1;
 }
 
 .btn-primary:hover {
-  background: #ffed4e;
+  background: transparent;
+  color: var(--cyber-primary);
+  box-shadow: 0 0 30px var(--cyber-primary);
   transform: translateY(-2px);
 }
 
 .btn-secondary {
   background: transparent;
-  color: white;
-  border: 2px solid white;
+  color: var(--cyber-accent);
+  border: 2px solid var(--cyber-accent);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.btn-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--cyber-accent);
+  transition: left 0.3s ease;
+  z-index: -1;
 }
 
 .btn-secondary:hover {
-  background: white;
-  color: #333;
+  color: var(--cyber-dark);
+  box-shadow: 0 0 30px var(--cyber-accent);
+  transform: translateY(-2px);
+}
+
+.btn-secondary:hover::before {
+  left: 0;
 }
 
 .btn-outline {
   background: transparent;
-  color: #3498db;
-  border: 2px solid #3498db;
+  color: var(--cyber-accent);
+  border: 2px solid var(--cyber-accent);
+  border-radius: 0;
+  font-family: 'Orbitron', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 15px) 0,
+    100% 15px,
+    100% 100%,
+    15px 100%,
+    0 calc(100% - 15px)
+  );
+}
+
+.btn-outline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--cyber-accent);
+  transition: left 0.3s ease;
+  z-index: -1;
 }
 
 .btn-outline:hover {
-  background: #3498db;
-  color: white;
+  color: var(--cyber-bg);
+  box-shadow: 0 0 30px var(--cyber-accent);
+  transform: translateY(-2px);
+}
+
+.btn-outline:hover::before {
+  left: 0;
 }
 
 .code-animation {
-  background: #2d3748;
-  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--cyber-primary);
+  border-radius: 0;
   padding: 2rem;
-  font-family: 'Courier New', monospace;
+  font-family: 'Orbitron', monospace;
   font-size: 1.1rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow:
+    0 0 20px rgba(0, 255, 159, 0.2),
+    inset 0 0 20px rgba(0, 255, 159, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.code-animation::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyber-primary), transparent);
+  animation: scan 2s linear infinite;
+}
+
+@keyframes scan {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
 }
 
 .code-line {
   margin-bottom: 0.5rem;
-  color: #e2e8f0;
+  color: var(--cyber-text);
 }
 
 .code-keyword {
-  color: #f093fb;
+  color: var(--cyber-secondary);
 }
 
 .code-function {
-  color: #4fd1c7;
+  color: var(--cyber-accent);
 }
 
 .code-string {
-  color: #68d391;
+  color: var(--cyber-primary);
+}
+
+.code-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background: var(--cyber-primary);
+  margin-left: 2px;
+  animation: cursor-blink 1s infinite;
+  box-shadow: 0 0 10px var(--cyber-primary);
+}
+
+@keyframes cursor-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes scan-project {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
 }
 
 .container {
@@ -322,12 +463,31 @@ const featuredProjects = ref([
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 3rem;
-  color: #2c3e50;
+  color: var(--cyber-accent);
+  font-family: 'Orbitron', monospace;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 15px var(--cyber-accent);
 }
 
 .skills-preview {
   padding: 4rem 0;
-  background: #f8f9fa;
+  background: transparent;
+  position: relative;
+}
+
+.skills-preview::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(rgba(0, 212, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.02) 1px, transparent 1px);
+  background-size: 30px 30px;
+  z-index: -1;
 }
 
 .tech-grid {
@@ -341,14 +501,38 @@ const featuredProjects = ref([
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--cyber-primary);
+  border-radius: 0;
+  box-shadow:
+    0 0 20px rgba(0, 255, 159, 0.2),
+    inset 0 0 20px rgba(0, 255, 159, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 159, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.tech-item:hover::before {
+  left: 100%;
 }
 
 .tech-item:hover {
   transform: translateY(-5px);
+  border-color: var(--cyber-accent);
+  box-shadow:
+    0 10px 40px rgba(0, 255, 159, 0.4),
+    inset 0 0 20px rgba(0, 255, 159, 0.1);
 }
 
 .tech-icon {
@@ -358,7 +542,10 @@ const featuredProjects = ref([
 
 .tech-name {
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--cyber-text);
+  font-family: 'Orbitron', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .projects-preview {
@@ -373,44 +560,146 @@ const featuredProjects = ref([
 }
 
 .project-card {
-  background: white;
-  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(0, 255, 159, 0.3);
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  box-shadow:
+    0 0 30px rgba(0, 255, 159, 0.2),
+    inset 0 0 30px rgba(0, 255, 159, 0.05);
+  transition: all 0.4s ease;
+  position: relative;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 20px) 0,
+    100% 20px,
+    100% 100%,
+    20px 100%,
+    0 calc(100% - 20px)
+  );
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--cyber-primary),
+    var(--cyber-accent),
+    transparent
+  );
+  animation: scan-project 3s linear infinite;
+  z-index: 1;
 }
 
 .project-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-15px) scale(1.02);
+  border-color: var(--cyber-primary);
+  box-shadow:
+    0 0 50px rgba(0, 255, 159, 0.4),
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    inset 0 0 50px rgba(0, 255, 159, 0.1);
 }
 
 .project-image {
   height: 200px;
-  background: linear-gradient(45deg, #3498db, #9b59b6);
+  background: linear-gradient(
+    135deg,
+    rgba(0, 255, 159, 0.8) 0%,
+    rgba(0, 212, 255, 0.6) 50%,
+    rgba(255, 0, 128, 0.8) 100%
+  );
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.1) 2px,
+    rgba(0, 0, 0, 0.1) 4px
+  );
+  z-index: 1;
+}
+
+.project-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.3) 70%);
+  z-index: 2;
 }
 
 .project-placeholder {
   font-size: 4rem;
+  z-index: 3;
+  position: relative;
+  filter: drop-shadow(0 0 20px var(--cyber-primary));
+  animation: float-icon 3s ease-in-out infinite;
+}
+
+@keyframes float-icon {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
 }
 
 .project-content {
   padding: 2rem;
+  position: relative;
+}
+
+.project-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyber-primary), transparent);
+  box-shadow: 0 0 10px var(--cyber-primary);
 }
 
 .project-title {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: bold;
   margin-bottom: 1rem;
-  color: #2c3e50;
+  color: var(--cyber-primary);
+  font-family: 'Orbitron', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px var(--cyber-primary);
 }
 
 .project-description {
-  color: #666;
+  color: var(--cyber-text-dim);
   line-height: 1.6;
   margin-bottom: 1.5rem;
+  font-family: 'Rajdhani', sans-serif;
 }
 
 .project-tags {
@@ -420,12 +709,25 @@ const featuredProjects = ref([
 }
 
 .tag {
-  background: #e3f2fd;
-  color: #1976d2;
-  padding: 0.3rem 0.8rem;
-  border-radius: 15px;
-  font-size: 0.9rem;
+  background: rgba(0, 255, 159, 0.1);
+  color: var(--cyber-primary);
+  border: 1px solid rgba(0, 255, 159, 0.3);
+  padding: 0.4rem 1rem;
+  border-radius: 0;
+  font-size: 0.85rem;
   font-weight: 500;
+  font-family: 'Orbitron', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 5px var(--cyber-primary);
+  transition: all 0.3s ease;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+
+.tag:hover {
+  background: rgba(0, 255, 159, 0.2);
+  box-shadow: 0 0 15px rgba(0, 255, 159, 0.3);
+  transform: scale(1.05);
 }
 
 .text-center {

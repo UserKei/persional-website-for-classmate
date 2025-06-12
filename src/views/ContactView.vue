@@ -492,6 +492,38 @@ const toggleFaq = (id: number) => {
 <style scoped>
 .contact {
   padding: 2rem 0;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* 数字雨背景效果 */
+.contact::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(45deg, transparent, rgba(0, 255, 159, 0.03), transparent),
+    linear-gradient(-45deg, transparent, rgba(255, 0, 128, 0.03), transparent),
+    radial-gradient(circle at 30% 80%, rgba(0, 212, 255, 0.05) 0%, transparent 50%);
+  background-size:
+    200px 200px,
+    150px 150px,
+    300px 300px;
+  animation: cyber-matrix 15s linear infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes cyber-matrix {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-100px) rotate(5deg);
+  }
 }
 
 .container {
@@ -506,24 +538,47 @@ const toggleFaq = (id: number) => {
 }
 
 .page-title {
-  font-size: 2.5rem;
-  color: #2c3e50;
+  font-size: 3rem;
+  color: var(--cyber-primary);
   margin-bottom: 1rem;
+  font-family: 'Orbitron', monospace;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 0 20px var(--cyber-primary);
+  text-align: center;
 }
 
 .page-description {
-  font-size: 1.1rem;
-  color: #666;
+  font-size: 1.2rem;
+  color: var(--cyber-text-dim);
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
+  text-align: center;
 }
 
 .section-title {
-  font-size: 2rem;
+  font-size: 2.5rem;
   text-align: center;
   margin-bottom: 3rem;
-  color: #2c3e50;
+  color: var(--cyber-primary);
+  font-family: 'Orbitron', monospace;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px var(--cyber-primary);
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyber-primary), transparent);
+  box-shadow: 0 0 10px var(--cyber-primary);
 }
 
 .contact-content {
@@ -540,37 +595,78 @@ const toggleFaq = (id: number) => {
 }
 
 .contact-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 159, 0.3);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(0, 255, 159, 0.1);
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyber-accent), transparent);
+  transition: left 0.6s ease;
 }
 
 .contact-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px) scale(1.02);
+  border-color: var(--cyber-primary);
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(0, 255, 159, 0.3);
+}
+
+.contact-card:hover::before {
+  left: 100%;
 }
 
 .contact-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 0 10px var(--cyber-primary));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }
 
 .contact-title {
-  color: #2c3e50;
+  color: var(--cyber-primary);
   margin-bottom: 0.5rem;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  font-family: 'Orbitron', monospace;
+  text-shadow: 0 0 10px var(--cyber-primary);
 }
 
 .contact-value {
-  color: #3498db;
+  color: var(--cyber-accent);
   font-weight: 600;
   margin-bottom: 0.5rem;
+  font-family: 'Rajdhani', sans-serif;
+  text-shadow: 0 0 5px var(--cyber-accent);
 }
 
 .contact-description {
-  color: #666;
+  color: var(--cyber-text-dim);
   font-size: 0.9rem;
   margin-bottom: 1.5rem;
   line-height: 1.4;
@@ -578,25 +674,75 @@ const toggleFaq = (id: number) => {
 
 .contact-button {
   display: inline-block;
-  padding: 0.6rem 1.2rem;
-  background: #3498db;
-  color: white;
+  padding: 0.8rem 1.5rem;
+  background: transparent;
+  color: var(--cyber-primary);
   text-decoration: none;
+  border: 2px solid var(--cyber-primary);
   border-radius: 25px;
   font-size: 0.9rem;
   font-weight: 600;
-  transition: background 0.3s ease;
+  font-family: 'Rajdhani', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--cyber-primary);
+  transition: left 0.3s ease;
+  z-index: -1;
 }
 
 .contact-button:hover {
-  background: #2980b9;
+  color: var(--cyber-bg);
+  box-shadow: 0 0 20px var(--cyber-primary);
+  text-shadow: none;
+}
+
+.contact-button:hover::before {
+  left: 0;
 }
 
 .contact-form {
-  background: white;
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 159, 0.3);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(0, 255, 159, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyber-primary), transparent);
+  animation: scan-line 4s linear infinite;
+}
+
+@keyframes scan-line {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
 }
 
 .form-row {
@@ -612,37 +758,55 @@ const toggleFaq = (id: number) => {
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #2c3e50;
+  color: var(--cyber-primary);
   font-weight: 600;
+  font-family: 'Orbitron', monospace;
+  text-shadow: 0 0 5px var(--cyber-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 0.8rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(0, 255, 159, 0.3);
+  border-radius: 10px;
+  color: var(--cyber-text);
   font-size: 1rem;
-  transition: border-color 0.3s ease;
+  font-family: 'Rajdhani', sans-serif;
+  transition: all 0.3s ease;
   box-sizing: border-box;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--cyber-text-dim);
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #3498db;
+  border-color: var(--cyber-primary);
+  box-shadow: 0 0 15px rgba(0, 255, 159, 0.3);
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .form-group input.error,
 .form-group textarea.error {
-  border-color: #e74c3c;
+  border-color: #ff6b6b;
+  box-shadow: 0 0 15px rgba(255, 107, 107, 0.3);
 }
 
 .error-message {
-  color: #e74c3c;
+  color: #ff6b6b;
   font-size: 0.8rem;
   margin-top: 0.3rem;
   display: block;
+  font-family: 'Rajdhani', sans-serif;
+  text-shadow: 0 0 5px #ff6b6b;
 }
 
 .form-group textarea {
@@ -652,24 +816,50 @@ const toggleFaq = (id: number) => {
 
 .submit-button {
   width: 100%;
-  padding: 1rem;
-  background: #3498db;
-  color: white;
-  border: none;
-  border-radius: 8px;
+  padding: 1.2rem;
+  background: transparent;
+  color: var(--cyber-primary);
+  border: 2px solid var(--cyber-primary);
+  border-radius: 10px;
   font-size: 1rem;
   font-weight: 600;
+  font-family: 'Orbitron', monospace;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--cyber-primary);
+  transition: left 0.3s ease;
+  z-index: -1;
 }
 
 .submit-button:hover:not(:disabled) {
-  background: #2980b9;
+  color: var(--cyber-bg);
+  box-shadow: 0 0 30px var(--cyber-primary);
+  text-shadow: none;
+}
+
+.submit-button:hover:not(:disabled)::before {
+  left: 0;
 }
 
 .submit-button:disabled {
-  background: #bdc3c7;
+  background: rgba(0, 0, 0, 0.3);
+  border-color: var(--cyber-text-dim);
+  color: var(--cyber-text-dim);
   cursor: not-allowed;
+  box-shadow: none;
 }
 
 .social-section {
@@ -683,34 +873,63 @@ const toggleFaq = (id: number) => {
 }
 
 .social-card {
-  background: white;
-  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 159, 0.3);
+  padding: 2rem;
   border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 15px rgba(0, 255, 159, 0.1);
   text-align: center;
   text-decoration: none;
   color: inherit;
-  transition: transform 0.3s ease;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyber-accent), transparent);
+  transition: left 0.5s ease;
 }
 
 .social-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px) scale(1.05);
+  border-color: var(--cyber-primary);
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.4),
+    0 0 25px rgba(0, 255, 159, 0.3);
+}
+
+.social-card:hover::before {
+  left: 100%;
 }
 
 .social-icon {
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
+  filter: drop-shadow(0 0 10px var(--cyber-accent));
+  animation: float 3s ease-in-out infinite;
 }
 
 .social-name {
-  color: #2c3e50;
+  color: var(--cyber-primary);
   margin-bottom: 0.5rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  font-family: 'Orbitron', monospace;
+  text-shadow: 0 0 5px var(--cyber-primary);
 }
 
 .social-description {
-  color: #666;
-  font-size: 0.85rem;
+  color: var(--cyber-text-dim);
+  font-size: 0.9rem;
   line-height: 1.4;
 }
 
@@ -724,11 +943,39 @@ const toggleFaq = (id: number) => {
 }
 
 .faq-item {
-  background: white;
-  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 159, 0.3);
+  border-radius: 15px;
   margin-bottom: 1rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 15px rgba(0, 255, 159, 0.1);
   overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.faq-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyber-accent), transparent);
+  transition: left 0.5s ease;
+}
+
+.faq-item:hover {
+  border-color: var(--cyber-primary);
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.4),
+    0 0 25px rgba(0, 255, 159, 0.2);
+}
+
+.faq-item:hover::before {
+  left: 100%;
 }
 
 .faq-question {
@@ -737,27 +984,35 @@ const toggleFaq = (id: number) => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .faq-question:hover {
-  background: #f8f9fa;
+  background: rgba(0, 255, 159, 0.05);
 }
 
 .faq-question h3 {
   margin: 0;
-  color: #2c3e50;
+  color: var(--cyber-primary);
   font-size: 1.1rem;
+  font-family: 'Orbitron', monospace;
+  text-shadow: 0 0 5px var(--cyber-primary);
+  letter-spacing: 0.5px;
 }
 
 .faq-toggle {
   font-size: 1.5rem;
-  color: #3498db;
-  transition: transform 0.3s ease;
+  color: var(--cyber-accent);
+  transition: all 0.3s ease;
+  text-shadow: 0 0 10px var(--cyber-accent);
+  font-family: 'Orbitron', monospace;
 }
 
 .faq-toggle.active {
   transform: rotate(45deg);
+  color: var(--cyber-primary);
+  text-shadow: 0 0 15px var(--cyber-primary);
 }
 
 .faq-answer {
@@ -773,8 +1028,9 @@ const toggleFaq = (id: number) => {
 .faq-answer p {
   padding: 0 1.5rem 1.5rem;
   margin: 0;
-  color: #666;
+  color: var(--cyber-text-dim);
   line-height: 1.6;
+  font-family: 'Rajdhani', sans-serif;
 }
 
 @media (max-width: 768px) {

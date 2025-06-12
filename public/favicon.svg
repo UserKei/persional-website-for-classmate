@@ -1,0 +1,102 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Neon gradients -->
+    <linearGradient id="neonPink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF10F0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF00FF;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="neonCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00FFFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00E5FF;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="neonPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9D00FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7000FF;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Glow effects -->
+    <filter id="neonGlow">
+      <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Scanline effect -->
+    <pattern id="scanlines" x="0" y="0" width="100%" height="2" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="32" y2="0" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+    </pattern>
+    
+    <!-- Glitch effect -->
+    <filter id="glitch">
+      <feColorMatrix type="saturate" values="3"/>
+      <feComponentTransfer>
+        <feFuncA type="discrete" tableValues="1 .5 .5 1 1 1 .5 .5 1 .5 1"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+  
+  <!-- Dark background -->
+  <rect width="32" height="32" fill="#0A0A0A"/>
+  
+  <!-- Grid pattern -->
+  <g opacity="0.1">
+    <line x1="8" y1="0" x2="8" y2="32" stroke="#00FFFF" stroke-width="0.5"/>
+    <line x1="16" y1="0" x2="16" y2="32" stroke="#00FFFF" stroke-width="0.5"/>
+    <line x1="24" y1="0" x2="24" y2="32" stroke="#00FFFF" stroke-width="0.5"/>
+    <line x1="0" y1="8" x2="32" y2="8" stroke="#00FFFF" stroke-width="0.5"/>
+    <line x1="0" y1="16" x2="32" y2="16" stroke="#00FFFF" stroke-width="0.5"/>
+    <line x1="0" y1="24" x2="32" y2="24" stroke="#00FFFF" stroke-width="0.5"/>
+  </g>
+  
+  <!-- Cyberpunk letters -->
+  <g filter="url(#neonGlow)">
+    <!-- K with glitch -->
+    <text x="5" y="21" 
+          font-family="Orbitron, Roboto Mono, monospace" 
+          font-size="16" 
+          font-weight="900" 
+          fill="url(#neonPink)"
+          style="letter-spacing: -1px">K</text>
+    
+    <!-- K shadow/glitch effect -->
+    <text x="5.5" y="21.5" 
+          font-family="Orbitron, Roboto Mono, monospace" 
+          font-size="16" 
+          font-weight="900" 
+          fill="url(#neonCyan)"
+          opacity="0.7"
+          style="letter-spacing: -1px">K</text>
+    
+    <!-- E -->
+    <text x="13" y="21" 
+          font-family="Orbitron, Roboto Mono, monospace" 
+          font-size="16" 
+          font-weight="900" 
+          fill="url(#neonCyan)"
+          style="letter-spacing: -1px">E</text>
+    
+    <!-- I -->
+    <text x="21" y="21" 
+          font-family="Orbitron, Roboto Mono, monospace" 
+          font-size="16" 
+          font-weight="900" 
+          fill="url(#neonPurple)"
+          style="letter-spacing: -1px">I</text>
+  </g>
+  
+  <!-- Scanlines overlay -->
+  <rect width="32" height="32" fill="url(#scanlines)"/>
+  
+  <!-- Corner accents -->
+  <g opacity="0.8">
+    <path d="M 2 8 L 2 2 L 8 2" stroke="#00FFFF" stroke-width="1" fill="none"/>
+    <path d="M 24 2 L 30 2 L 30 8" stroke="#FF00FF" stroke-width="1" fill="none"/>
+    <path d="M 30 24 L 30 30 L 24 30" stroke="#00FFFF" stroke-width="1" fill="none"/>
+    <path d="M 8 30 L 2 30 L 2 24" stroke="#FF00FF" stroke-width="1" fill="none"/>
+  </g>
+</svg>

@@ -505,6 +505,35 @@ const getSkillLevelClass = (level: number) => {
 <style scoped>
 .skills {
   padding: 2rem 0;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* 数字雨背景效果 */
+.skills::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(0, 255, 159, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(255, 0, 128, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(0, 212, 255, 0.05) 0%, transparent 50%);
+  animation: cyber-pulse 10s ease-in-out infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes cyber-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 .container {
@@ -519,24 +548,47 @@ const getSkillLevelClass = (level: number) => {
 }
 
 .page-title {
-  font-size: 2.5rem;
-  color: #2c3e50;
+  font-size: 3rem;
+  color: var(--cyber-primary);
   margin-bottom: 1rem;
+  font-family: 'Orbitron', monospace;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 0 20px var(--cyber-primary);
+  text-align: center;
 }
 
 .page-description {
-  font-size: 1.1rem;
-  color: #666;
+  font-size: 1.2rem;
+  color: var(--cyber-text-dim);
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
+  text-align: center;
 }
 
 .section-title {
-  font-size: 2rem;
+  font-size: 2.5rem;
   text-align: center;
   margin-bottom: 3rem;
-  color: #2c3e50;
+  color: var(--cyber-primary);
+  font-family: 'Orbitron', monospace;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px var(--cyber-primary);
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyber-primary), transparent);
+  box-shadow: 0 0 10px var(--cyber-primary);
 }
 
 .technical-skills {
@@ -550,23 +602,73 @@ const getSkillLevelClass = (level: number) => {
 }
 
 .skill-category {
-  background: white;
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 159, 0.3);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(0, 255, 159, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.skill-category::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyber-accent), transparent);
+  animation: scan-line 4s linear infinite;
+}
+
+@keyframes scan-line {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.skill-category:hover {
+  border-color: var(--cyber-primary);
+  transform: translateY(-5px);
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(0, 255, 159, 0.3);
 }
 
 .category-title {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
   margin-bottom: 2rem;
-  color: #2c3e50;
-  font-size: 1.3rem;
+  color: var(--cyber-primary);
+  font-size: 1.4rem;
+  font-family: 'Orbitron', monospace;
+  text-shadow: 0 0 10px var(--cyber-primary);
+  letter-spacing: 1px;
 }
 
 .category-icon {
-  font-size: 1.5rem;
+  font-size: 2rem;
+  filter: drop-shadow(0 0 10px var(--cyber-accent));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }
 
 .skills-list {
@@ -576,8 +678,9 @@ const getSkillLevelClass = (level: number) => {
 }
 
 .skill-item {
-  border-bottom: 1px solid #f0f0f0;
-  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 255, 159, 0.2);
+  padding-bottom: 1.5rem;
+  position: relative;
 }
 
 .skill-item:last-child {
@@ -589,54 +692,106 @@ const getSkillLevelClass = (level: number) => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
 }
 
 .skill-name {
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--cyber-text);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.1rem;
 }
 
 .skill-level {
-  font-size: 0.9rem;
-  color: #3498db;
+  font-size: 1rem;
+  color: var(--cyber-accent);
   font-weight: 600;
+  font-family: 'Orbitron', monospace;
+  text-shadow: 0 0 5px var(--cyber-accent);
 }
 
 .skill-bar {
-  height: 8px;
-  background: #f0f0f0;
-  border-radius: 4px;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 255, 159, 0.2);
+  border-radius: 5px;
   overflow: hidden;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
+  position: relative;
+}
+
+.skill-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 159, 0.1), transparent);
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 .skill-progress {
   height: 100%;
   border-radius: 4px;
   transition: width 1s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: progress-glow 2s ease-in-out infinite;
+}
+
+@keyframes progress-glow {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 .skill-progress.expert {
-  background: linear-gradient(90deg, #27ae60, #2ecc71);
+  background: linear-gradient(90deg, var(--cyber-primary), var(--cyber-accent));
+  box-shadow: 0 0 15px var(--cyber-primary);
 }
 
 .skill-progress.advanced {
-  background: linear-gradient(90deg, #3498db, #5dade2);
+  background: linear-gradient(90deg, var(--cyber-secondary), var(--cyber-primary));
+  box-shadow: 0 0 15px var(--cyber-secondary);
 }
 
 .skill-progress.intermediate {
-  background: linear-gradient(90deg, #f39c12, #f7dc6f);
+  background: linear-gradient(90deg, var(--cyber-accent), var(--cyber-secondary));
+  box-shadow: 0 0 15px var(--cyber-accent);
 }
 
 .skill-progress.beginner {
-  background: linear-gradient(90deg, #e74c3c, #ec7063);
+  background: linear-gradient(90deg, #ff6b6b, var(--cyber-accent));
+  box-shadow: 0 0 15px #ff6b6b;
 }
 
 .skill-description {
-  font-size: 0.9rem;
-  color: #666;
-  line-height: 1.4;
+  font-size: 0.95rem;
+  color: var(--cyber-text-dim);
+  line-height: 1.5;
 }
 
 .tools-section {
@@ -650,34 +805,63 @@ const getSkillLevelClass = (level: number) => {
 }
 
 .tool-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 159, 0.3);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(0, 255, 159, 0.1);
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tool-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyber-accent), transparent);
+  transition: left 0.6s ease;
 }
 
 .tool-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px) scale(1.02);
+  border-color: var(--cyber-primary);
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(0, 255, 159, 0.3);
+}
+
+.tool-card:hover::before {
+  left: 100%;
 }
 
 .tool-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 0 10px var(--cyber-primary));
+  animation: float 3s ease-in-out infinite;
 }
 
 .tool-name {
-  color: #2c3e50;
+  color: var(--cyber-primary);
   margin-bottom: 1rem;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  font-family: 'Orbitron', monospace;
+  text-shadow: 0 0 10px var(--cyber-primary);
 }
 
 .tool-description {
-  color: #666;
+  color: var(--cyber-text-dim);
   line-height: 1.6;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
 }
 
 .tool-tags {
@@ -688,12 +872,22 @@ const getSkillLevelClass = (level: number) => {
 }
 
 .tag {
-  background: #e3f2fd;
-  color: #1976d2;
-  padding: 0.3rem 0.8rem;
-  border-radius: 15px;
-  font-size: 0.8rem;
+  background: rgba(0, 255, 159, 0.1);
+  color: var(--cyber-primary);
+  border: 1px solid rgba(0, 255, 159, 0.3);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
   font-weight: 500;
+  font-family: 'Rajdhani', sans-serif;
+  text-shadow: 0 0 5px var(--cyber-primary);
+  transition: all 0.3s ease;
+}
+
+.tag:hover {
+  background: rgba(0, 255, 159, 0.2);
+  box-shadow: 0 0 15px rgba(0, 255, 159, 0.3);
+  transform: scale(1.05);
 }
 
 .learning-section {
@@ -712,9 +906,18 @@ const getSkillLevelClass = (level: number) => {
   left: 50%;
   top: 0;
   bottom: 0;
-  width: 2px;
-  background: #3498db;
+  width: 3px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--cyber-primary),
+    var(--cyber-accent),
+    var(--cyber-secondary),
+    transparent
+  );
   transform: translateX(-50%);
+  box-shadow: 0 0 10px var(--cyber-primary);
+  animation: pulse-line 3s ease-in-out infinite;
 }
 
 .learning-item {
@@ -735,21 +938,43 @@ const getSkillLevelClass = (level: number) => {
   position: absolute;
   left: 50%;
   top: 1rem;
-  width: 12px;
-  height: 12px;
-  background: #3498db;
+  width: 16px;
+  height: 16px;
+  background: var(--cyber-primary);
+  border: 2px solid var(--cyber-bg);
   border-radius: 50%;
   transform: translateX(-50%);
   z-index: 1;
+  box-shadow:
+    0 0 20px var(--cyber-primary),
+    inset 0 0 10px rgba(0, 255, 159, 0.3);
+  animation: pulse-marker 2s ease-in-out infinite;
 }
 
 .learning-content {
-  background: white;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 159, 0.3);
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(0, 255, 159, 0.1);
   max-width: 350px;
   margin-right: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.learning-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyber-primary), transparent);
+  animation: scan-line 3s linear infinite;
 }
 
 .learning-item:nth-child(even) .learning-content {
@@ -758,19 +983,24 @@ const getSkillLevelClass = (level: number) => {
 }
 
 .learning-period {
-  color: #3498db;
+  color: var(--cyber-accent);
   font-weight: 600;
   margin-bottom: 0.5rem;
+  font-family: 'Orbitron', monospace;
+  text-shadow: 0 0 10px var(--cyber-accent);
+  letter-spacing: 1px;
 }
 
 .learning-title {
-  font-size: 1.2rem;
-  color: #2c3e50;
+  font-size: 1.3rem;
+  color: var(--cyber-primary);
   margin-bottom: 1rem;
+  font-family: 'Orbitron', monospace;
+  text-shadow: 0 0 10px var(--cyber-primary);
 }
 
 .learning-description {
-  color: #666;
+  color: var(--cyber-text-dim);
   line-height: 1.6;
   margin-bottom: 1rem;
 }
@@ -782,12 +1012,22 @@ const getSkillLevelClass = (level: number) => {
 }
 
 .skill-tag {
-  background: #e8f5e8;
-  color: #4caf50;
-  padding: 0.3rem 0.8rem;
-  border-radius: 15px;
-  font-size: 0.8rem;
+  background: rgba(0, 255, 159, 0.1);
+  color: var(--cyber-primary);
+  border: 1px solid rgba(0, 255, 159, 0.3);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
   font-weight: 500;
+  font-family: 'Rajdhani', sans-serif;
+  text-shadow: 0 0 5px var(--cyber-primary);
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  background: rgba(0, 255, 159, 0.2);
+  box-shadow: 0 0 15px rgba(0, 255, 159, 0.3);
+  transform: scale(1.05);
 }
 
 .certificates-section {
@@ -801,45 +1041,78 @@ const getSkillLevelClass = (level: number) => {
 }
 
 .certificate-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 159, 0.3);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(0, 255, 159, 0.1);
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.certificate-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyber-accent), transparent);
+  transition: left 0.6s ease;
 }
 
 .certificate-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px) scale(1.02);
+  border-color: var(--cyber-primary);
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(0, 255, 159, 0.3);
+}
+
+.certificate-card:hover::before {
+  left: 100%;
 }
 
 .certificate-icon {
   font-size: 3rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 0 10px var(--cyber-primary));
+  animation: float 3s ease-in-out infinite;
 }
 
 .certificate-title {
-  color: #2c3e50;
+  color: var(--cyber-primary);
   margin-bottom: 0.5rem;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  font-family: 'Orbitron', monospace;
+  text-shadow: 0 0 10px var(--cyber-primary);
 }
 
 .certificate-issuer {
-  color: #3498db;
+  color: var(--cyber-accent);
   font-weight: 600;
   margin-bottom: 0.5rem;
+  font-family: 'Rajdhani', sans-serif;
+  text-shadow: 0 0 5px var(--cyber-accent);
 }
 
 .certificate-date {
-  color: #999;
+  color: var(--cyber-secondary);
   font-size: 0.9rem;
   margin-bottom: 1rem;
+  font-family: 'Orbitron', monospace;
+  text-shadow: 0 0 5px var(--cyber-secondary);
 }
 
 .certificate-description {
-  color: #666;
+  color: var(--cyber-text-dim);
   line-height: 1.6;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
 }
 
 @media (max-width: 768px) {
