@@ -61,7 +61,7 @@ const featuredProjects = ref([
             :initial="{ opacity: 0, y: 100 }"
             :enter="{ opacity: 1, y: 0, transition: { duration: 800, delay: 200 } }"
           >
-            你好，我是
+            你好，我是<br>
             <span class="highlight hologram-text">陈梓涛</span>
           </h1>
           <h2
