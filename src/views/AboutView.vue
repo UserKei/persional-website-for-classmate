@@ -11,7 +11,7 @@
               :initial="{ scale: 0, rotate: 180 }"
               :enter="{ scale: 1, rotate: 0, transition: { duration: 800, type: 'spring' } }"
             >
-              <span class="avatar-emoji">👨‍💻</span>
+              <img src="/src/assets/avatar.jpg" alt="陈梓涛" class="avatar-image" />
             </div>
           </div>
           <div class="about-text">
@@ -337,6 +337,14 @@ const values = ref([
 
 .avatar-emoji {
   font-size: 5rem;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  filter: contrast(1.1) brightness(1.1);
 }
 
 .about-title {

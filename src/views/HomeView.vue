@@ -42,6 +42,17 @@ const featuredProjects = ref([
     <!-- Hero Section -->
     <section class="hero">
       <div class="hero-content">
+        <div class="hero-avatar">
+          <div
+            class="avatar-container hud-border cyber-interference"
+            v-motion
+            :initial="{ opacity: 0, scale: 0, rotate: 180 }"
+            :enter="{ opacity: 1, scale: 1, rotate: 0, transition: { duration: 1000, delay: 300, type: 'spring' } }"
+          >
+            <img src="/src/assets/avatar.jpg" alt="陈梓涛" class="avatar-image" />
+            <div class="avatar-glow"></div>
+          </div>
+        </div>
         <div class="hero-text">
           <h1
             class="hero-title glitch-text"
@@ -216,9 +227,98 @@ const featuredProjects = ref([
   margin: 0 auto;
   padding: 0 2rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  grid-template-columns: auto 1fr 1fr;
+  gap: 3rem;
   align-items: center;
+}
+
+.hero-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 3px solid var(--cyber-primary);
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  box-shadow:
+    0 0 30px rgba(0, 255, 159, 0.3),
+    inset 0 0 30px rgba(0, 255, 159, 0.1);
+  animation: avatar-pulse 3s ease-in-out infinite alternate;
+}
+
+.avatar-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    var(--cyber-primary),
+    var(--cyber-accent),
+    var(--cyber-secondary),
+    transparent
+  );
+  animation: avatar-rotate 4s linear infinite;
+  z-index: -1;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+  filter: contrast(1.1) brightness(1.1);
+}
+
+.avatar-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 255, 159, 0.1) 0%,
+    rgba(0, 212, 255, 0.05) 50%,
+    transparent 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+@keyframes avatar-pulse {
+  0% {
+    box-shadow:
+      0 0 30px rgba(0, 255, 159, 0.3),
+      inset 0 0 30px rgba(0, 255, 159, 0.1);
+  }
+  100% {
+    box-shadow:
+      0 0 50px rgba(0, 255, 159, 0.5),
+      inset 0 0 50px rgba(0, 255, 159, 0.2);
+  }
+}
+
+@keyframes avatar-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .hero-title {
@@ -739,6 +839,15 @@ const featuredProjects = ref([
     grid-template-columns: 1fr;
     gap: 2rem;
     text-align: center;
+  }
+
+  .hero-avatar {
+    order: -1;
+  }
+
+  .avatar-container {
+    width: 150px;
+    height: 150px;
   }
 
   .hero-title {
