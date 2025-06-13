@@ -12,78 +12,42 @@ onMounted(() => {
 </script>
 
 <template>
-  <nav
-    class="navbar"
-    :class="{ 'navbar-scrolled': isScrolled }"
-    v-motion
-    :initial="{ y: -100, opacity: 0 }"
-    :enter="{ y: 0, opacity: 1, transition: { duration: 600, delay: 200 } }"
-  >
+  <nav class="navbar" :class="{ 'navbar-scrolled': isScrolled }" v-motion :initial="{ y: -100, opacity: 0 }"
+    :enter="{ y: 0, opacity: 1, transition: { duration: 600, delay: 200 } }">
     <div class="navbar-container">
-      <RouterLink
-        to="/"
-        class="navbar-brand glitch-text"
-        data-text="张同学"
-        v-motion
-        :initial="{ x: -50, opacity: 0 }"
+      <RouterLink to="/" class="navbar-brand glitch-text" data-text="陈梓涛" v-motion :initial="{ x: -50, opacity: 0 }"
         :enter="{ x: 0, opacity: 1, transition: { duration: 500, delay: 400 } }"
-        :hover="{ scale: 1.1, transition: { duration: 200 } }"
-      >
-        张同学
+        :hover="{ scale: 1.1, transition: { duration: 200 } }">
+        陈梓涛
       </RouterLink>
       <div class="navbar-menu">
-        <RouterLink
-          to="/"
-          class="navbar-link"
-          v-motion
-          :initial="{ y: -20, opacity: 0 }"
+        <RouterLink to="/" class="navbar-link" v-motion :initial="{ y: -20, opacity: 0 }"
           :enter="{ y: 0, opacity: 1, transition: { duration: 400, delay: 500 } }"
-          :hover="{ y: -2, transition: { duration: 200 } }"
-        >
+          :hover="{ y: -2, transition: { duration: 200 } }">
           首页
           <span class="navbar-link-underline"></span>
         </RouterLink>
-        <RouterLink
-          to="/about"
-          class="navbar-link"
-          v-motion
-          :initial="{ y: -20, opacity: 0 }"
+        <RouterLink to="/about" class="navbar-link" v-motion :initial="{ y: -20, opacity: 0 }"
           :enter="{ y: 0, opacity: 1, transition: { duration: 400, delay: 600 } }"
-          :hover="{ y: -2, transition: { duration: 200 } }"
-        >
+          :hover="{ y: -2, transition: { duration: 200 } }">
           关于我
           <span class="navbar-link-underline"></span>
         </RouterLink>
-        <RouterLink
-          to="/projects"
-          class="navbar-link"
-          v-motion
-          :initial="{ y: -20, opacity: 0 }"
+        <RouterLink to="/projects" class="navbar-link" v-motion :initial="{ y: -20, opacity: 0 }"
           :enter="{ y: 0, opacity: 1, transition: { duration: 400, delay: 700 } }"
-          :hover="{ y: -2, transition: { duration: 200 } }"
-        >
+          :hover="{ y: -2, transition: { duration: 200 } }">
           项目
           <span class="navbar-link-underline"></span>
         </RouterLink>
-        <RouterLink
-          to="/skills"
-          class="navbar-link"
-          v-motion
-          :initial="{ y: -20, opacity: 0 }"
+        <RouterLink to="/skills" class="navbar-link" v-motion :initial="{ y: -20, opacity: 0 }"
           :enter="{ y: 0, opacity: 1, transition: { duration: 400, delay: 800 } }"
-          :hover="{ y: -2, transition: { duration: 200 } }"
-        >
+          :hover="{ y: -2, transition: { duration: 200 } }">
           技能
           <span class="navbar-link-underline"></span>
         </RouterLink>
-        <RouterLink
-          to="/contact"
-          class="navbar-link"
-          v-motion
-          :initial="{ y: -20, opacity: 0 }"
+        <RouterLink to="/contact" class="navbar-link" v-motion :initial="{ y: -20, opacity: 0 }"
           :enter="{ y: 0, opacity: 1, transition: { duration: 400, delay: 900 } }"
-          :hover="{ y: -2, transition: { duration: 200 } }"
-        >
+          :hover="{ y: -2, transition: { duration: 200 } }">
           联系
           <span class="navbar-link-underline"></span>
         </RouterLink>
@@ -95,39 +59,21 @@ onMounted(() => {
     <RouterView />
   </main>
 
-  <footer
-    class="footer"
-    v-motion
-    :initial="{ opacity: 0, y: 50 }"
-    :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }"
-  >
+  <footer class="footer" v-motion :initial="{ opacity: 0, y: 50 }"
+    :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }">
     <div class="footer-content">
-      <p>&copy; 2025 张同学. All rights reserved.</p>
+      <p>&copy; 2025 陈梓涛. All rights reserved.</p>
       <div class="social-links">
-        <a
-          href="https://github.com"
-          target="_blank"
-          class="social-link"
-          v-motion
-          :hover="{ scale: 1.1, transition: { duration: 200 } }"
-        >
+        <a href="https://github.com" target="_blank" class="social-link" v-motion
+          :hover="{ scale: 1.1, transition: { duration: 200 } }">
           GitHub
         </a>
-        <a
-          href="https://linkedin.com"
-          target="_blank"
-          class="social-link"
-          v-motion
-          :hover="{ scale: 1.1, transition: { duration: 200 } }"
-        >
+        <a href="https://linkedin.com" target="_blank" class="social-link" v-motion
+          :hover="{ scale: 1.1, transition: { duration: 200 } }">
           LinkedIn
         </a>
-        <a
-          href="mailto:student@example.com"
-          class="social-link"
-          v-motion
-          :hover="{ scale: 1.1, transition: { duration: 200 } }"
-        >
+        <a href="mailto:student@example.com" class="social-link" v-motion
+          :hover="{ scale: 1.1, transition: { duration: 200 } }">
           Email
         </a>
       </div>

@@ -9,7 +9,7 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
       meta: {
-        title: '首页 - 张同学',
+        title: '首页',
       },
     },
     {
@@ -17,7 +17,7 @@ const router = createRouter({
       name: 'about',
       component: () => import('../views/AboutView.vue'),
       meta: {
-        title: '关于我 - 张同学',
+        title: '关于我',
       },
     },
     {
@@ -25,7 +25,7 @@ const router = createRouter({
       name: 'projects',
       component: () => import('../views/ProjectsView.vue'),
       meta: {
-        title: '项目展示 - 张同学',
+        title: '项目展示',
       },
     },
     {
@@ -33,7 +33,7 @@ const router = createRouter({
       name: 'skills',
       component: () => import('../views/SkillsView.vue'),
       meta: {
-        title: '技能展示 - 张同学',
+        title: '技能展示',
       },
     },
     {
@@ -41,7 +41,7 @@ const router = createRouter({
       name: 'contact',
       component: () => import('../views/ContactView.vue'),
       meta: {
-        title: '联系我 - 张同学',
+        title: '联系我',
       },
     },
     {
@@ -49,7 +49,7 @@ const router = createRouter({
       name: 'notFound',
       component: () => import('../views/NotFoundView.vue'),
       meta: {
-        title: '页面未找到 - 张同学',
+        title: '页面未找到',
       },
     },
   ],

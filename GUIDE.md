@@ -16,7 +16,7 @@
 
 ```typescript
 // 修改个人介绍
-const heroTitle = '你好，我是张同学' // 改为你的名字
+const heroTitle = '你好，我是陈梓涛' // 改为你的名字
 const heroSubtitle = '计算机专业大学生 | 全栈开发者' // 改为你的身份
 const heroDescription = '热爱编程，专注于Web开发...' // 改为你的描述
 
@@ -200,7 +200,7 @@ body {
   name: 'newPage',
   component: () => import('../views/NewPageView.vue'),
   meta: {
-    title: '新页面 - 张同学'
+    title: '新页面 - 陈梓涛'
   }
 }
 ```

@@ -43,7 +43,7 @@ VITE_CONTACT_EMAIL=your-email@example.com
 创建 `.env.production` 文件（生产环境）：
 
 ```env
-VITE_APP_TITLE=张同学 - 赛博朋克编程者
+VITE_APP_TITLE=陈梓涛 - 赛博朋克编程者
 VITE_API_BASE_URL=https://your-api.com/api
 VITE_CONTACT_EMAIL=your-email@example.com
 ```
@@ -81,7 +81,7 @@ const HomeView = () => import('../views/HomeView.vue')
 {
   "@context": "https://schema.org/",
   "@type": "Person",
-  "name": "张同学",
+  "name": "陈梓涛",
   "jobTitle": "计算机专业学生",
   "description": "热爱编程的计算机专业大学生",
   "url": "https://your-website.com"
